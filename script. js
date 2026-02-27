@@ -1,0 +1,52 @@
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+
+function backToHome(){
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+  document.querySelector('.menu-buttons').scrollIntoView({behavior:'smooth'});
+}
+
+function openFullscreen(img){
+  const win = window.open('');
+  win.document.write('<img src="'+img.src+'" style="width:100%">');
+}
+
+// Projects details
+function showProjectDetails(num){
+  const detail = document.getElementById('project-detail');
+  let text = '';
+  if(num===1){
+    text = `1️⃣ Rehab Device
+Name: Rehabilitation Support Device
+Problem: Patients recovering from injury or surgery need repeated exercises...
+How it works: Motion sensors, microcontroller, LED/buzzer, mobile app tracking...
+Key Components: Motion sensor, Arduino, LED, buzzer, battery...
+Purpose: Assist rehab exercises and monitor improvement.`;
+  } else if(num===2){
+    text = `2️⃣ Emotional Regulation System
+Detects excitement, stress, fear, insecurity.
+Heart rate + skin sensors → software feedback → user learns control...
+Key Components: HR sensor, skin sensor, microcontroller, display/app.
+Purpose: Emotional awareness & self-control.`;
+  } else if(num===3){
+    text = `3️⃣ Bias Detector (GPS)
+Detects repeated biased decisions in malls, markets, offices...
+Uses GPS, pattern analysis, stores past decisions...
+Key Components: GPS, software, storage.
+Purpose: Improve fair thinking by location-aware bias detection.`;
+  } else if(num===4){
+    text = `4️⃣ Safety Watch
+Monitors heart rate, detects drowsiness/falls, auto-call emergency...
+For elderly and 2-wheelers.
+Key Components: HR sensor, accelerometer, GPS, GSM, microcontroller, battery.
+Purpose: Life-saving personal safety device.`;
+  } else if(num===5){
+    text = `5️⃣ Projector App
+Camera captures textbook page, OCR reads topic, searches online educational videos, displays animations.
+Key Components: Camera, OCR, API, app interface.
+Purpose: Smart learning support.`;
+  }
+  detail.innerText = text;
+}
