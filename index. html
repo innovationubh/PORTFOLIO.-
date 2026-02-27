@@ -3,94 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <title>My Innovation Portfolio</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background: linear-gradient(270deg,#eef2f3,#ffffff,#f9f9d2,#ffd6e0);
+  background-size:800% 800%;
+  animation:bg 15s ease infinite;
+  text-align:center;
+}
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.section{padding:30px;}
+.hidden{display:none;}
+button{
+  display:block;
+  margin:12px auto;
+  padding:12px 28px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  background:pink;
+  cursor:pointer;
+}
+img{
+  width:260px;
+  border-radius:15px;
+  animation:zoom 1.5s;
+}
+@keyframes zoom{
+  from{transform:scale(0.8);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+textarea{
+  width:80%;
+  height:80px;
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
+<!-- MENU -->
+<div id="menu" class="section">
   <h1>🌟 My Innovation Portfolio</h1>
+  <button onclick="show('about')">About Me</button>
+  <button onclick="show('projects')">Projects</button>
+  <button onclick="show('skills')">Skills</button>
+  <button onclick="show('contact')">Contact</button>
+</div>
 
-  <!-- Vertical Buttons -->
-  <div class="menu-buttons">
-    <button onclick="showSection('about')">About Me</button>
-    <button onclick="showSection('projects')">Projects</button>
-    <button onclick="showSection('skills')">Skills</button>
-    <button onclick="showSection('contact')">Contact</button>
-  </div>
+<!-- ABOUT -->
+<div id="about" class="section hidden">
+  <h2>About Me</h2>
+  <img src="images/Colorful Model Personal Profile All About Me Poster_20260227_191237_0000.jpg">
+  <p>
+Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
+Right now I study in Class <span id="class"></span>.<br>
+My age is <span id="age"></span> years.<br>
+My stream is PCB (Physics, Chemistry, Biology), but I also learn engineering on my own.<br><br>
+I like working on:
+Health and safety devices<br>
+Smart systems using sensors<br>
+Learning-based technology<br>
+Problem-solving through innovation<br><br>
+My goal is to gain skills, work in a job, and slowly build my own startup.
+  </p>
+  <button onclick="back()">⬅ Back</button>
+</div>
 
-  <!-- Sections -->
-  <div id="about" class="section">
-    <h2>About Me</h2>
-    <img src="images/Colorful_Model_AboutMe.jpg" class="profile-img" onclick="openFullscreen(this)">
-    <p>
-Hi 👋, I am a science student who is interested in machines, electronics, and future technology.<br>
-Right now, I am studying in Class 11. My age is 17 years.<br>
-My academic stream is PCB (Physics, Chemistry, Biology), but I am also learning technology and engineering concepts on my own.<br>
-I like working on ideas related to health & safety devices, smart systems using sensors, and problem-solving through innovation.<br>
-I believe learning is not only from books but also from making prototypes, testing ideas, failing and improving, and observing real-life problems.<br>
-My goal is to first gain skills and experience, then work in a job, and slowly build my own startup.<br>
-This portfolio shows my journey, projects, and skills as I move forward.
-    </p>
-    <button onclick="backToHome()">Back</button>
-  </div>
+<!-- PROJECTS -->
+<div id="projects" class="section hidden">
+  <h2>Projects</h2>
+  <img src="images/1_20260227_193115_0000.jpg">
+  <button onclick="project(1)">Rehab Device</button>
+  <button onclick="project(2)">Emotional Regulation</button>
+  <button onclick="project(3)">Bias Detector</button>
+  <button onclick="project(4)">Safety Watch</button>
+  <button onclick="project(5)">Projector App</button>
+  <button onclick="back()">⬅ Back</button>
+</div>
 
-  <div id="projects" class="section">
-    <h2>Projects</h2>
+<!-- PROJECT DETAIL -->
+<div id="detail" class="section hidden"></div>
 
-    <!-- Flashcards -->
-    <div class="flashcard" onclick="showProjectDetails(1)">1️⃣ Rehab Device</div>
-    <div class="flashcard" onclick="showProjectDetails(2)">2️⃣ Emotional Regulation System</div>
-    <div class="flashcard" onclick="showProjectDetails(3)">3️⃣ Bias Detector (GPS)</div>
-    <div class="flashcard" onclick="showProjectDetails(4)">4️⃣ Safety Watch</div>
-    <div class="flashcard" onclick="showProjectDetails(5)">5️⃣ Projector App</div>
-
-    <div id="project-detail" class="project-detail"></div>
-    <button onclick="backToHome()">Back</button>
-  </div>
-
-  <div id="skills" class="section">
-    <h2>Skills</h2>
-    <img src="images/Brown_Minimalist_Instagram.jpg" class="profile-img" onclick="openFullscreen(this)">
-    <p>
-🔧 Technical & Engineering Skills<br>
-Basic electronics & system design<br>
-Learning CPU & Raspberry Pi<br>
+<!-- SKILLS -->
+<div id="skills" class="section hidden">
+  <h2>Skills</h2>
+  <img src="images/Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194943_0000.jpg">
+  <p>
+🔧 Technical Skills<br>
+Basic electronics, Arduino, sensors<br>
 Hardware–software integration<br><br>
 
-💻 Software & Digital Skills<br>
-Simple web project demos<br>
-GitHub project management<br>
-Logical digital workflows<br><br>
+💻 Software Skills<br>
+Web demos, GitHub, logic building<br><br>
 
-🎬 Creative & Media Skills<br>
-Animated explainer content<br>
-Scene & motion design<br>
-Visual storytelling<br><br>
+🎬 Creative Skills<br>
+Animation, motion design, visual ideas<br><br>
 
-🗣️ Communication & Collaboration Skills<br>
-Clear technical explanation<br>
-Structured documentation<br>
-Idea presentation<br><br>
+🗣️ Communication Skills<br>
+Clear explanation, documentation, presentation<br><br>
 
 🌟 Core Strength<br>
 Tech + creativity + innovation<br>
-Problem-to-project thinking<br>
 Continuous learner
-    </p>
-    <button onclick="backToHome()">Back</button>
-  </div>
-
-  <div id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: yourmail@gmail.com</p>
-    <p>Instagram: @yourid</p>
-    <p>Snapchat: @yourid</p>
-    <p>“Dream big. Start small. Act now.”</p>
-    <button onclick="backToHome()">Back</button>
-  </div>
-
+  </p>
+  <button onclick="back()">⬅ Back</button>
 </div>
 
-<script src="script.js"></script>
+<!-- CONTACT -->
+<div id="contact" class="section hidden">
+  <h2>Contact</h2>
+  <p>Email: example@gmail.com</p>
+  <p>Instagram: @yourid</p>
+  <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
+  <button onclick="save()">Submit Feedback</button>
+  <button onclick="back()">⬅ Back</button>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+function back(){ show('menu'); }
+
+function project(n){
+  let data={
+1:`Rehabilitation Support Device:
+Uses motion sensors to track limb movement.
+Arduino processes angle and speed.
+Correct motion = OK signal.
+Wrong motion = buzzer alert.
+Helps patients exercise safely.`,
+2:`Emotional Regulation System:
+Monitors heart rate and skin response.
+Detects stress, fear, excitement.
+Gives calming feedback.
+Improves self-control.`,
+3:`Bias Detection System:
+Uses questions and GPS location.
+Finds unfair decision patterns.
+Suggests logical thinking.
+Improves awareness.`,
+4:`Smart Safety Watch:
+Detects heart rate and falls.
+Auto GPS emergency alert.
+Drowsiness detection.
+Life-saving system.`,
+5:`Learning Projector App:
+Scans textbook page.
+Finds matching videos.
+Shows best learning content.
+Smart study tool.`
+  };
+  document.getElementById("detail").innerHTML=
+  "<h2>Project Detail</h2><p>"+data[n]+"</p><button onclick=\"show('projects')\">⬅ Back</button>";
+  show("detail");
+}
+
+function save(){
+  localStorage.setItem("feedback",document.getElementById("fb").value);
+  alert("Feedback saved");
+}
+
+let y=new Date().getFullYear();
+document.getElementById("class").innerText=(y>=2026?"12":"11");
+document.getElementById("age").innerText=y-2008;
+</script>
+
 </body>
 </html>
