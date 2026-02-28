@@ -60,16 +60,14 @@ textarea{
 <!-- ABOUT -->
 <div id="about" class="section hidden">
   <h2>About Me</h2>
-  <img src="images/Colorful Model Personal Profile All About Me Poster_20260227_191237_0000.jpg">
+  <img src="Colorful Model Personal Profile All About Me Poster_20260227_191237_0000.jpg">
   <p>
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
-Right now I study in Class <span id="class"></span>.<br>
-My age is <span id="age"></span> years.<br>
-My stream is PCB (Physics, Chemistry, Biology), but I also learn engineering on my own.<br><br>
-I like working on:
+I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
+I like working on:<br>
 Health and safety devices<br>
-Smart systems using sensors<br>
-Learning-based technology<br>
+Smart sensor systems<br>
+Learning technology<br>
 Problem-solving through innovation<br><br>
 My goal is to gain skills, work in a job, and slowly build my own startup.
   </p>
@@ -79,7 +77,7 @@ My goal is to gain skills, work in a job, and slowly build my own startup.
 <!-- PROJECTS -->
 <div id="projects" class="section hidden">
   <h2>Projects</h2>
-  <img src="images/1_20260227_193115_0000.jpg">
+  <img src="1_20260227_193115_0000.jpg">
   <button onclick="project(1)">Rehab Device</button>
   <button onclick="project(2)">Emotional Regulation</button>
   <button onclick="project(3)">Bias Detector</button>
@@ -94,7 +92,7 @@ My goal is to gain skills, work in a job, and slowly build my own startup.
 <!-- SKILLS -->
 <div id="skills" class="section hidden">
   <h2>Skills</h2>
-  <img src="images/Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194943_0000.jpg">
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194943_0000.jpg">
   <p>
 🔧 Technical Skills<br>
 Basic electronics, Arduino, sensors<br>
@@ -121,7 +119,9 @@ Continuous learner
   <h2>Contact</h2>
   <p>Email: example@gmail.com</p>
   <p>Instagram: @yourid</p>
-  <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
+
+  <h3>Feedback</h3>
+  <textarea id="fb" placeholder="Write your feedback..."></textarea><br><br>
   <button onclick="save()">Submit Feedback</button>
   <button onclick="back()">⬅ Back</button>
 </div>
@@ -136,31 +136,28 @@ function back(){ show('menu'); }
 function project(n){
   let data={
 1:`Rehabilitation Support Device:
-Uses motion sensors to track limb movement.
-Arduino processes angle and speed.
-Correct motion = OK signal.
-Wrong motion = buzzer alert.
+Tracks limb movement using sensors.
+Arduino processes motion angle and speed.
+Correct motion gives OK signal.
+Wrong motion triggers buzzer.
 Helps patients exercise safely.`,
 2:`Emotional Regulation System:
 Monitors heart rate and skin response.
-Detects stress, fear, excitement.
+Detects stress, fear, excitement, insecurity.
 Gives calming feedback.
-Improves self-control.`,
+Improves emotional control.`,
 3:`Bias Detection System:
-Uses questions and GPS location.
-Finds unfair decision patterns.
-Suggests logical thinking.
+Uses logic questions and GPS.
+Detects biased patterns in decisions.
 Improves awareness.`,
 4:`Smart Safety Watch:
 Detects heart rate and falls.
 Auto GPS emergency alert.
-Drowsiness detection.
-Life-saving system.`,
+Detects drowsiness.`,
 5:`Learning Projector App:
-Scans textbook page.
+Scans textbook pages.
 Finds matching videos.
-Shows best learning content.
-Smart study tool.`
+Shows best learning content.`
   };
   document.getElementById("detail").innerHTML=
   "<h2>Project Detail</h2><p>"+data[n]+"</p><button onclick=\"show('projects')\">⬅ Back</button>";
@@ -169,12 +166,8 @@ Smart study tool.`
 
 function save(){
   localStorage.setItem("feedback",document.getElementById("fb").value);
-  alert("Feedback saved");
+  alert("Feedback saved!");
 }
-
-let y=new Date().getFullYear();
-document.getElementById("class").innerText=(y>=2026?"12":"11");
-document.getElementById("age").innerText=y-2008;
 </script>
 
 </body>
