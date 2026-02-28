@@ -2,176 +2,96 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Innovation Portfolio</title>
-
+<title>Yuvraj Portfolio</title>
 <style>
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  background: linear-gradient(270deg,#eef2f3,#ffffff,#f9f9d2,#ffd6e0);
-  background-size:800% 800%;
-  animation:bg 15s ease infinite;
-  text-align:center;
+  scroll-behavior:smooth;
+  background:#fff;
 }
-@keyframes bg{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+
+/* section style */
+.section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
 }
-.section{padding:30px;}
-.hidden{display:none;}
-button{
-  display:block;
-  margin:12px auto;
-  padding:12px 28px;
-  font-size:16px;
+
+/* images */
+.section img{
+  max-width:95%;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+/* buttons */
+.btn{
+  margin:10px;
+  padding:12px 25px;
   border:none;
-  border-radius:10px;
-  background:pink;
+  border-radius:20px;
+  background:#ffb703;
+  color:black;
+  font-size:16px;
   cursor:pointer;
 }
-img{
-  width:260px;
-  border-radius:15px;
-  animation:zoom 1.5s;
+
+.btn:hover{
+  background:#ffd166;
 }
-@keyframes zoom{
-  from{transform:scale(0.8);opacity:0}
-  to{transform:scale(1);opacity:1}
+
+/* page 3 */
+#contact{
+  background:black;
+  color:white;
+  text-align:center;
 }
-textarea{
+
+input,textarea{
   width:80%;
-  height:80px;
+  padding:10px;
+  margin:8px;
+  border-radius:10px;
+  border:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MENU -->
-<div id="menu" class="section">
-  <h1>🌟 My Innovation Portfolio</h1>
-  <button onclick="show('about')">About Me</button>
-  <button onclick="show('projects')">Projects</button>
-  <button onclick="show('skills')">Skills</button>
-  <button onclick="show('contact')">Contact</button>
+<!-- PAGE 1 (ABOUT ME IMAGE) -->
+<div class="section" id="page1">
+  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
 </div>
 
-<!-- ABOUT ME IMAGE -->
-<img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
-
-<!-- PROJECTS IMAGE -->
-<img src="1_20260227_193115_0000.jpg">
-
-<!-- SKILLS IMAGE -->
-<img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
-Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
-I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-I like working on:<br>
-Health and safety devices<br>
-Smart sensor systems<br>
-Learning technology<br>
-Problem-solving through innovation<br><br>
-My goal is to gain skills, work in a job, and slowly build my own startup.
-  </p>
-  <button onclick="back()">⬅ Back</button>
-</div>
-
-<!-- PROJECTS -->
-<div id="projects" class="section hidden">
-  <h2>Projects</h2>
+<!-- PAGE 2 (PROJECT + SKILLS) -->
+<div class="section" id="page2">
   <img src="1_20260227_193115_0000.jpg">
-  <button onclick="project(1)">Rehab Device</button>
-  <button onclick="project(2)">Emotional Regulation</button>
-  <button onclick="project(3)">Bias Detector</button>
-  <button onclick="project(4)">Safety Watch</button>
-  <button onclick="project(5)">Projector App</button>
-  <button onclick="back()">⬅ Back</button>
+  <br><br>
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
 </div>
 
-<!-- PROJECT DETAIL -->
-<div id="detail" class="section hidden"></div>
+<!-- PAGE 3 (CONTACT + FEEDBACK + ADMIN) -->
+<div class="section" id="contact">
+  <h1>Contact & Feedback</h1>
 
-<!-- SKILLS -->
-<div id="skills" class="section hidden">
-  <h2>Skills</h2>
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194943_0000.jpg">
-  <p>
-🔧 Technical Skills<br>
-Basic electronics, Arduino, sensors<br>
-Hardware–software integration<br><br>
+  <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
+  <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
-💻 Software Skills<br>
-Web demos, GitHub, logic building<br><br>
+  <h2>Feedback</h2>
+  <input type="text" placeholder="Your Name">
+  <textarea rows="4" placeholder="Your Feedback"></textarea>
+  <br>
+  <button class="btn">Submit</button>
 
-🎬 Creative Skills<br>
-Animation, motion design, visual ideas<br><br>
+  <h2>Admin</h2>
+  <button class="btn">Admin Login</button>
 
-🗣️ Communication Skills<br>
-Clear explanation, documentation, presentation<br><br>
-
-🌟 Core Strength<br>
-Tech + creativity + innovation<br>
-Continuous learner
-  </p>
-  <button onclick="back()">⬅ Back</button>
+  <p style="margin-top:30px;">© Yuvraj Portfolio</p>
 </div>
-
-<!-- CONTACT -->
-<div id="contact" class="section hidden">
-  <h2>Contact</h2>
-  <p>Email: example@gmail.com</p>
-  <p>Instagram: @yourid</p>
-
-  <h3>Feedback</h3>
-  <textarea id="fb" placeholder="Write your feedback..."></textarea><br><br>
-  <button onclick="save()">Submit Feedback</button>
-  <button onclick="back()">⬅ Back</button>
-</div>
-
-<script>
-function show(id){
-  document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-}
-function back(){ show('menu'); }
-
-function project(n){
-  let data={
-1:`Rehabilitation Support Device:
-Tracks limb movement using sensors.
-Arduino processes motion angle and speed.
-Correct motion gives OK signal.
-Wrong motion triggers buzzer.
-Helps patients exercise safely.`,
-2:`Emotional Regulation System:
-Monitors heart rate and skin response.
-Detects stress, fear, excitement, insecurity.
-Gives calming feedback.
-Improves emotional control.`,
-3:`Bias Detection System:
-Uses logic questions and GPS.
-Detects biased patterns in decisions.
-Improves awareness.`,
-4:`Smart Safety Watch:
-Detects heart rate and falls.
-Auto GPS emergency alert.
-Detects drowsiness.`,
-5:`Learning Projector App:
-Scans textbook pages.
-Finds matching videos.
-Shows best learning content.`
-  };
-  document.getElementById("detail").innerHTML=
-  "<h2>Project Detail</h2><p>"+data[n]+"</p><button onclick=\"show('projects')\">⬅ Back</button>";
-  show("detail");
-}
-
-function save(){
-  localStorage.setItem("feedback",document.getElementById("fb").value);
-  alert("Feedback saved!");
-}
-</script>
 
 </body>
 </html>
