@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Yuvraj Portfolio</title>
+
 <style>
 body{
   margin:0;
   font-family:Arial, sans-serif;
   scroll-behavior:smooth;
-  background:#fff;
+  background:white;
 }
 
-/* section style */
+/* sections */
 .section{
   min-height:100vh;
   display:flex;
@@ -24,7 +25,14 @@ body{
 .section img{
   max-width:95%;
   border-radius:20px;
-  box-shadow:0 0 20px rgba(0,0,0,0.2);
+  box-shadow:0 0 20px rgba(0,0,0,0.25);
+  cursor:pointer;
+  animation:fadeZoom 1.5s ease;
+}
+
+@keyframes fadeZoom{
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:1; transform:scale(1);}
 }
 
 /* buttons */
@@ -34,64 +42,113 @@ body{
   border:none;
   border-radius:20px;
   background:#ffb703;
-  color:black;
   font-size:16px;
   cursor:pointer;
 }
+.btn:hover{background:#ffd166;}
 
-.btn:hover{
-  background:#ffd166;
-}
-
-/* page 3 */
+/* contact page */
 #contact{
   background:black;
   color:white;
   text-align:center;
 }
 
-input,textarea{
-  width:80%;
-  padding:10px;
-  margin:8px;
-  border-radius:10px;
-  border:none;
+/* fullscreen image */
+#fullscreen{
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+#fullscreen img{
+  max-width:95%;
+  max-height:95%;
+}
+
+/* project list */
+#projectsList{
+  display:none;
+  text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 (ABOUT ME IMAGE) -->
+<!-- FULLSCREEN VIEW -->
+<div id="fullscreen" onclick="closeFull()">
+  <img id="fullImg">
+</div>
+
+<!-- PAGE 1 -->
 <div class="section" id="page1">
-  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
+  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- PAGE 2 (PROJECT + SKILLS) -->
+<!-- PAGE 2 -->
 <div class="section" id="page2">
-  <img src="1_20260227_193115_0000.jpg">
+  <!-- PROJECT IMAGE -->
+  <img src="1_20260227_193115_0000.jpg" onclick="openProjects()">
   <br><br>
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
+
+  <!-- SKILLS IMAGE -->
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- PAGE 3 (CONTACT + FEEDBACK + ADMIN) -->
+<!-- PROJECTS FLASHCARDS -->
+<div class="section" id="projectsList">
+  <h2>My Projects</h2>
+  <button class="btn">Rehabilitation Support Device</button>
+  <button class="btn">Emotional Regulation System</button>
+  <button class="btn">Bias Detection System</button>
+  <button class="btn">Smart Safety Watch</button>
+  <button class="btn">Learning Projector App</button>
+  <button class="btn" onclick="backToPage2()">⬅ Back</button>
+</div>
+
+<!-- PAGE 3 -->
 <div class="section" id="contact">
   <h1>Contact & Feedback</h1>
-
   <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name">
-  <textarea rows="4" placeholder="Your Feedback"></textarea>
-  <br>
+  <input type="text" placeholder="Your Name"><br>
+  <textarea rows="4" placeholder="Your Feedback"></textarea><br>
   <button class="btn">Submit</button>
 
   <h2>Admin</h2>
   <button class="btn">Admin Login</button>
-
-  <p style="margin-top:30px;">© Yuvraj Portfolio</p>
 </div>
+
+<script>
+/* fullscreen */
+function openFull(src){
+  document.getElementById("fullscreen").style.display="flex";
+  document.getElementById("fullImg").src=src;
+}
+function closeFull(){
+  document.getElementById("fullscreen").style.display="none";
+}
+
+/* open projects */
+function openProjects(){
+  document.getElementById("page2").style.display="none";
+  document.getElementById("projectsList").style.display="flex";
+}
+
+/* back */
+function backToPage2(){
+  document.getElementById("projectsList").style.display="none";
+  document.getElementById("page2").style.display="flex";
+}
+</script>
 
 </body>
 </html>
