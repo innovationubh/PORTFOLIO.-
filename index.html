@@ -19,6 +19,8 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
+  padding:20px;
+  text-align:center;
 }
 
 /* images */
@@ -51,7 +53,6 @@ body{
 #contact{
   background:black;
   color:white;
-  text-align:center;
 }
 
 /* fullscreen image */
@@ -72,9 +73,8 @@ body{
 }
 
 /* project list */
-#projectsList{
+#projectsList, #projectDetail{
   display:none;
-  text-align:center;
 }
 </style>
 </head>
@@ -86,31 +86,43 @@ body{
   <img id="fullImg">
 </div>
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 (WELCOME) -->
 <div class="section" id="page1">
+  <h1>WELCOME</h1>
+  <h2>TO MY PORTFOLIO</h2>
+  <p>
+Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
+I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
+I like working on:<br>
+Health and safety devices<br>
+Smart sensor systems<br>
+Learning technology<br>
+Problem-solving through innovation
+  </p>
+  <br>
   <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
-  <!-- PROJECT IMAGE -->
   <img src="1_20260227_193115_0000.jpg" onclick="openProjects()">
   <br><br>
-
-  <!-- SKILLS IMAGE -->
   <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 </div>
 
 <!-- PROJECTS FLASHCARDS -->
 <div class="section" id="projectsList">
   <h2>My Projects</h2>
-  <button class="btn">Rehabilitation Support Device</button>
-  <button class="btn">Emotional Regulation System</button>
-  <button class="btn">Bias Detection System</button>
-  <button class="btn">Smart Safety Watch</button>
-  <button class="btn">Learning Projector App</button>
+  <button class="btn" onclick="showProject(1)">Rehabilitation Support Device</button>
+  <button class="btn" onclick="showProject(2)">Emotional Regulation System</button>
+  <button class="btn" onclick="showProject(3)">Bias Detection System</button>
+  <button class="btn" onclick="showProject(4)">Smart Safety Watch</button>
+  <button class="btn" onclick="showProject(5)">Learning Projector App</button>
   <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
+
+<!-- PROJECT DETAIL -->
+<div class="section" id="projectDetail"></div>
 
 <!-- PAGE 3 -->
 <div class="section" id="contact">
@@ -119,8 +131,8 @@ body{
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name"><br>
-  <textarea rows="4" placeholder="Your Feedback"></textarea><br>
+  <input type="text" placeholder="Your Name"><br><br>
+  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
   <button class="btn">Submit</button>
 
   <h2>Admin</h2>
@@ -147,6 +159,128 @@ function openProjects(){
 function backToPage2(){
   document.getElementById("projectsList").style.display="none";
   document.getElementById("page2").style.display="flex";
+}
+
+/* project details */
+function showProject(n){
+  let data={
+1:`Rehabilitation Support Device<br><br>
+Problem: Patients need repeated guided exercises after injury or surgery.<br>
+The device is worn on arm or leg.<br>
+Motion sensors measure movement angle and speed.<br>
+Microcontroller processes data.<br>
+Correct motion gives OK signal.<br>
+Wrong motion triggers buzzer or LED.<br>
+Progress can be tracked on phone.<br>
+Used for home physiotherapy.<br>
+Improves recovery accuracy.<br>
+Reduces dependence on therapist.<br>
+Motivates patient to exercise.<br>
+Portable and light-weight.<br>
+Works on battery.<br>
+Helps avoid wrong posture.<br>
+Can store exercise data.<br>
+Low cost rehabilitation aid.<br>
+Educational medical device.<br>
+Future: AI posture correction.<br>
+Purpose: Safer rehabilitation training.`,
+
+2:`Emotional Regulation System<br><br>
+Problem: People do not notice emotional imbalance.<br>
+Heart rate sensor collects pulse data.<br>
+Skin response sensor detects stress level.<br>
+System checks unusual patterns.<br>
+Detects stress, fear, excitement, insecurity.<br>
+Compares with normal state.<br>
+If imbalance found, feedback is given.<br>
+Sound or vibration calms user.<br>
+Visual message guides breathing.<br>
+Improves emotional awareness.<br>
+Trains self-control ability.<br>
+Useful for students and workers.<br>
+Can connect to mobile app.<br>
+Tracks emotional trends.<br>
+Helps mental fitness.<br>
+Low power device.<br>
+Can be wearable.<br>
+Future: emotion prediction AI.<br>
+Purpose: emotional self-regulation.`,
+
+3:`Bias Detection System<br><br>
+Problem: People make biased decisions unknowingly.<br>
+User answers simple questions.<br>
+System records response pattern.<br>
+Time taken is measured.<br>
+GPS detects location (mall, market, office).<br>
+Behavior compared with past data.<br>
+Location-based bias found.<br>
+Repeated unfair pattern flagged.<br>
+System shows warning message.<br>
+Suggests neutral thinking.<br>
+Builds self-awareness.<br>
+Used in social studies.<br>
+Helps fair judgement.<br>
+Data stored securely.<br>
+Can be mobile app based.<br>
+Future: psychology research tool.<br>
+AI pattern detection possible.<br>
+Educational purpose.<br>
+Goal: reduce bias.`,
+
+4:`Smart Safety Watch<br><br>
+Problem: Elderly and riders face risk.<br>
+Heart rate sensor monitors pulse.<br>
+Accelerometer detects fall.<br>
+Sudden drop in heart rate alerts user.<br>
+Emergency mode can be triggered.<br>
+GPS sends location.<br>
+Message sent to family.<br>
+Camera can record surroundings.<br>
+Drowsiness detection for riders.<br>
+Impact detection in accident.<br>
+Auto emergency call.<br>
+Portable wearable device.<br>
+Battery powered.<br>
+Life saving design.<br>
+Helps during accidents.<br>
+Useful for night travel.<br>
+Works with phone.<br>
+Future: health prediction.<br>
+Purpose: personal safety.`,
+
+5:`Learning Projector App<br><br>
+Problem: Students struggle to find topic videos.<br>
+Camera scans textbook page.<br>
+OCR reads topic name.<br>
+App searches internet.<br>
+Filters syllabus related videos.<br>
+Shows best learning results.<br>
+Supports animations.<br>
+Helps self-study.<br>
+Reduces search time.<br>
+Smart learning tool.<br>
+Works on smartphone.<br>
+Uses internet API.<br>
+Can be connected to projector.<br>
+Visual learning supported.<br>
+Good for classrooms.<br>
+AI topic matching possible.<br>
+Future: offline mode.<br>
+Educational software tool.<br>
+Purpose: smart education.`
+  };
+
+  document.getElementById("projectDetail").innerHTML =
+    "<h2>Project Details</h2><p>"+data[n]+"</p><button class='btn' onclick='backToProjects()'>⬅ Back</button>";
+
+  document.getElementById("projectsList").style.display="none";
+  document.getElementById("projectDetail").style.display="flex";
+}
+
+/* back from detail */
+function backToProjects(){
+  document.getElementById("projectDetail").style.display="none";
+  document.getElementById("projectsList").style.display="flex";
 }
 </script>
 
