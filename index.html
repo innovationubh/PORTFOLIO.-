@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,20 +12,31 @@ body{
   background:white;
 }
 
+/* sections */
 .section{
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  padding:30px;
+  padding:20px;
   text-align:center;
 }
 
+/* bigger text */
 h1{font-size:2.5rem;}
 h2{font-size:2rem;}
 p{font-size:1.2rem; line-height:1.6;}
 
+/* mobile boost */
+@media(max-width:600px){
+  h1{font-size:3rem;}
+  h2{font-size:2.2rem;}
+  p{font-size:1.4rem;}
+  .btn{font-size:1.3rem;}
+}
+
+/* images */
 .section img{
   max-width:95%;
   border-radius:20px;
@@ -43,22 +51,25 @@ p{font-size:1.2rem; line-height:1.6;}
   to{opacity:1; transform:scale(1);}
 }
 
+/* buttons */
 .btn{
   margin:10px;
   padding:14px 28px;
   border:none;
   border-radius:20px;
   background:#ffb703;
+  font-size:18px;
   cursor:pointer;
-  font-size:1.1rem;
 }
 .btn:hover{background:#ffd166;}
 
+/* contact page */
 #contact{
   background:black;
   color:white;
 }
 
+/* fullscreen image */
 #fullscreen{
   position:fixed;
   top:0; left:0;
@@ -75,13 +86,15 @@ p{font-size:1.2rem; line-height:1.6;}
   max-height:95%;
 }
 
+/* hidden pages */
 #projectsImages{
   display:none;
 }
 
-#welcomePopup{
+/* welcome popup */
+#welcome{
   position:fixed;
-  top:0; left:0;
+  top:0;left:0;
   width:100%;
   height:100%;
   background:rgba(0,0,0,0.7);
@@ -94,14 +107,14 @@ p{font-size:1.2rem; line-height:1.6;}
   background:white;
   padding:30px;
   border-radius:15px;
-  text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<div id="welcomePopup">
+<!-- WELCOME POPUP -->
+<div id="welcome">
   <div id="welcomeBox">
     <h2>Welcome 👋</h2>
     <p>Thanks for visiting my portfolio</p>
@@ -109,6 +122,7 @@ p{font-size:1.2rem; line-height:1.6;}
   </div>
 </div>
 
+<!-- FULLSCREEN VIEW -->
 <div id="fullscreen" onclick="closeFull()">
   <img id="fullImg">
 </div>
@@ -154,8 +168,8 @@ Problem-solving through innovation
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <input type="text" id="name" placeholder="Your Name"><br><br>
-  <textarea rows="4" id="msg" placeholder="Your Feedback"></textarea><br><br>
+  <input id="name" type="text" placeholder="Your Name"><br><br>
+  <textarea id="msg" rows="4" placeholder="Your Feedback"></textarea><br><br>
   <button class="btn" onclick="saveFeedback()">Submit</button>
 
   <div id="feedbackList"></div>
@@ -166,7 +180,7 @@ Problem-solving through innovation
 
 <script>
 function closeWelcome(){
-  document.getElementById("welcomePopup").style.display="none";
+  document.getElementById("welcome").style.display="none";
 }
 
 function openFull(src){
@@ -181,12 +195,12 @@ function openProjectsImages(){
   document.getElementById("page2").style.display="none";
   document.getElementById("projectsImages").style.display="flex";
 }
-
 function backToPage2(){
   document.getElementById("projectsImages").style.display="none";
   document.getElementById("page2").style.display="flex";
 }
 
+/* feedback */
 function saveFeedback(){
   let name=document.getElementById("name").value;
   let msg=document.getElementById("msg").value;
@@ -200,7 +214,7 @@ function saveFeedback(){
 function showFeedback(){
   let all=JSON.parse(localStorage.getItem("fb")||"[]");
   let box=document.getElementById("feedbackList");
-  box.innerHTML="<h3>Feedback:</h3>";
+  box.innerHTML="<h3>Feedback</h3>";
   all.forEach(f=>{
     box.innerHTML+=`<p><b>${f.name}</b> (${f.date})<br>${f.msg}</p>`;
   });
