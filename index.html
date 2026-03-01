@@ -1,81 +1,104 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>INNOVATIONUBH</title>
+<title>Innovationubh</title>
 
 <style>
-body{
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
   font-family:Arial, sans-serif;
-  background:#ffffff;
-  color:#111;
   scroll-behavior:smooth;
+  background:#ffffff; /* PURE WHITE */
 }
 
 /* sections */
 .section{
   min-height:100vh;
-  padding:60px 20px;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
+  flex-direction:column;
+  padding:40px 20px;
   text-align:center;
 }
 
+/* remove gap between page1 & page2 */
+#page2{
+  margin-top:-40px;
+}
+
 /* headings */
-h1{font-size:42px; letter-spacing:3px;}
-h2{font-size:28px;}
-p{font-size:20px; max-width:800px; line-height:1.6;}
+h1{
+  font-size:42px;
+  letter-spacing:2px;
+}
+h2{
+  font-size:26px;
+  margin-top:10px;
+}
 
-/* image container */
-.img-box{
-  position:relative;
+/* text */
+p{
+  font-size:20px;
+  line-height:1.6;
+  max-width:900px;
+}
+
+/* images */
+.section img{
   max-width:90%;
-  margin:25px 0;
-  cursor:pointer;
-}
-.img-box img{
-  width:100%;
-  max-height:80vh;
-  object-fit:contain;
   border-radius:16px;
-  box-shadow:0 0 20px rgba(0,0,0,0.15);
+  box-shadow:0 0 12px rgba(0,0,0,0.15);
+  cursor:pointer;
+  animation:fadeZoom 1s ease;
+  margin-bottom:15px;
 }
 
-/* overlay strip */
+@keyframes fadeZoom{
+  from{opacity:0; transform:scale(0.95);}
+  to{opacity:1; transform:scale(1);}
+}
+
+/* overlay bar */
 .overlay{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.6);
+  width:90%;
+  background:rgba(0,0,0,0.7);
   color:white;
-  padding:14px;
+  padding:14px 20px;
+  border-radius:10px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-radius:0 0 16px 16px;
-  font-size:18px;
+  font-size:20px;
+  margin-top:-50px;
+  margin-bottom:25px;
 }
-.arrow{font-size:22px;}
 
-/* buttons */
-.btn{
-  padding:12px 25px;
-  border:none;
-  border-radius:20px;
-  background:#ffb703;
-  font-size:16px;
-  cursor:pointer;
+/* arrow */
+.arrow{
+  font-size:24px;
 }
-.btn:hover{background:#ffd166;}
+
+/* contact page */
+#contact{
+  background:black;
+  color:white;
+}
 
 /* fullscreen */
 #fullscreen{
   position:fixed;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   background:black;
   display:none;
   justify-content:center;
@@ -87,8 +110,33 @@ p{font-size:20px; max-width:800px; line-height:1.6;}
   max-height:95%;
 }
 
-/* hidden pages */
-#projectsPage, #adminPage{display:none;}
+/* hidden */
+#projectsImages{
+  display:none;
+}
+
+/* buttons */
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:25px;
+  background:#000;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+button:hover{
+  background:#333;
+}
+
+/* inputs */
+input, textarea{
+  padding:10px;
+  width:260px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
 </style>
 </head>
 
@@ -100,53 +148,44 @@ p{font-size:20px; max-width:800px; line-height:1.6;}
 </div>
 
 <!-- PAGE 1 -->
-<div class="section">
+<div class="section" id="page1">
   <h1>INNOVATIONUBH</h1>
   <h2>WELCOME TO MY PORTFOLIO</h2>
 
   <p>
-Hi 👋 I am a science student interested in machines, electronics, and future technology.<br><br>
+Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-I work on:<br>
-Health & safety devices<br>
+I like working on:<br>
+Health and safety devices<br>
 Smart sensor systems<br>
 Learning technology<br>
-Problem solving through innovation
+Problem-solving through innovation
   </p>
 
-  <div class="img-box" onclick="openFull('Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg')">
-    <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
-    <div class="overlay">
-      <span>ABOUT ME</span>
-      <span class="arrow">➜</span>
-    </div>
-  </div>
+  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
 
-  <div class="img-box" onclick="openProjects()">
-    <img src="1_20260227_193115_0000.jpg">
-    <div class="overlay">
-      <span>ARDUINO PROJECTS</span>
-      <span class="arrow">➜</span>
-    </div>
+  <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
+
+  <div class="overlay">
+    <span>ARDUINO PROJECTS</span>
+    <span class="arrow">➜</span>
   </div>
 
-  <div class="img-box" onclick="openFull('Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg')">
-    <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
-    <div class="overlay">
-      <span>SKILLS</span>
-      <span class="arrow">➜</span>
-    </div>
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
+
+  <div class="overlay">
+    <span>SKILLS</span>
+    <span class="arrow">➜</span>
   </div>
 
 </div>
 
-<!-- PROJECTS PAGE -->
-<div class="section" id="projectsPage">
-  <h1>MY PROJECTS</h1>
+<!-- PROJECT IMAGES PAGE -->
+<div class="section" id="projectsImages">
 
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
@@ -156,25 +195,23 @@ Problem solving through innovation
   <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
   <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
 
-  <button class="btn" onclick="back()">⬅ Back</button>
+  <br>
+  <button onclick="backToPage2()">⬅ Back</button>
 </div>
 
-<!-- ADMIN PANEL -->
-<div class="section" id="adminPage">
-  <h1>ADMIN PANEL</h1>
-  <input type="text" placeholder="Username"><br><br>
-  <input type="password" placeholder="Password"><br><br>
-  <button class="btn">Login</button><br><br>
-  <button class="btn" onclick="back()">⬅ Back</button>
-</div>
-
-<!-- CONTACT -->
-<div class="section">
-  <h1>CONTACT</h1>
+<!-- PAGE 3 -->
+<div class="section" id="contact">
+  <h1>Contact & Feedback</h1>
   <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
-  <button class="btn" onclick="openAdmin()">Admin Panel</button>
+  <h2>Feedback</h2><br>
+  <input type="text" placeholder="Your Name"><br><br>
+  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
+  <button>Submit</button>
+
+  <h2>Admin</h2>
+  <button>Admin Login</button>
 </div>
 
 <script>
@@ -185,21 +222,15 @@ function openFull(src){
 function closeFull(){
   document.getElementById("fullscreen").style.display="none";
 }
-function openProjects(){
+function openProjectsImages(){
   document.getElementById("page2").style.display="none";
-  document.getElementById("projectsPage").style.display="flex";
+  document.getElementById("projectsImages").style.display="flex";
 }
-function openAdmin(){
-  document.getElementById("page2").style.display="none";
-  document.getElementById("projectsPage").style.display="none";
-  document.getElementById("adminPage").style.display="flex";
-}
-function back(){
-  document.getElementById("projectsPage").style.display="none";
-  document.getElementById("adminPage").style.display="none";
+function backToPage2(){
+  document.getElementById("projectsImages").style.display="none";
   document.getElementById("page2").style.display="flex";
 }
 </script>
 
 </body>
-</html>
+  </html>
