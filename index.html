@@ -30,7 +30,13 @@ body{
   box-shadow:0 0 20px rgba(0,0,0,0.25);
   cursor:pointer;
   animation:fadeZoom 1.5s ease;
-  margin-bottom:20px;
+  margin-bottom:10px;
+}
+
+.caption{
+  font-size:18px;
+  margin-bottom:30px;
+  font-weight:bold;
 }
 
 @keyframes fadeZoom{
@@ -91,7 +97,7 @@ body{
 <div class="section" id="page1">
   <h1>WELCOME</h1>
   <h2>TO MY PORTFOLIO</h2>
-  <p>
+  <p style="font-size:20px;">
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
 I like working on:<br>
@@ -107,20 +113,35 @@ Problem-solving through innovation
 <!-- PAGE 2 -->
 <div class="section" id="page2">
   <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
-  <br><br>
+  <div class="caption">📂 Tap to view my project work</div>
+
   <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
+  <div class="caption">🧠 My skills & strengths</div>
 </div>
 
 <!-- PROJECT IMAGES PAGE -->
 <div class="section" id="projectsImages">
 
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
+  <div class="caption">Rehabilitation Support Device</div>
+
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
+  <div class="caption">Emotional Regulation System</div>
+
   <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
+  <div class="caption">Bias Detection System</div>
+
   <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
+  <div class="caption">Smart Safety Watch</div>
+
   <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
+  <div class="caption">Drowsiness & Intoxication Detection</div>
+
   <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
+  <div class="caption">Learning Projector App</div>
+
   <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
+  <div class="caption">Future Smart Health System</div>
 
   <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
@@ -132,12 +153,12 @@ Problem-solving through innovation
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name"><br><br>
-  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn">Submit</button>
+  <input type="text" id="name" placeholder="Your Name"><br><br>
+  <textarea rows="4" id="fb" placeholder="Your Feedback"></textarea><br><br>
+  <button class="btn" onclick="saveFeedback()">Submit</button>
 
   <h2>Admin</h2>
-  <button class="btn">Admin Login</button>
+  <button class="btn" onclick="adminLogin()">Admin Login</button>
 </div>
 
 <script>
@@ -160,6 +181,25 @@ function openProjectsImages(){
 function backToPage2(){
   document.getElementById("projectsImages").style.display="none";
   document.getElementById("page2").style.display="flex";
+}
+
+/* save feedback */
+function saveFeedback(){
+  let name = document.getElementById("name").value;
+  let fb = document.getElementById("fb").value;
+  let old = localStorage.getItem("feedbacks") || "";
+  localStorage.setItem("feedbacks", old + "\n" + name + ": " + fb);
+  alert("Feedback saved!");
+}
+
+/* admin */
+function adminLogin(){
+  let pass = prompt("Enter admin password:");
+  if(pass === "innovationstartshere"){
+    alert(localStorage.getItem("feedbacks") || "No feedback yet.");
+  } else {
+    alert("Wrong password");
+  }
 }
 </script>
 
