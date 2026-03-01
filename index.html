@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -22,52 +22,43 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  position:relative;
 }
 
 /* headings */
-h1{
-  font-size:42px;
-  letter-spacing:3px;
-}
-h2{
-  font-size:28px;
-  margin-top:10px;
-}
-p{
-  font-size:20px;
-  max-width:800px;
-  line-height:1.6;
-}
+h1{font-size:42px;letter-spacing:3px;}
+h2{font-size:28px;margin-top:10px;}
+p{font-size:20px;max-width:800px;line-height:1.6;}
 
-/* images */
-.imgBox{
+/* image card */
+.image-card{
   position:relative;
-  width:90%;
-  max-width:900px;
+  max-width:90%;
+  margin:25px 0;
+  cursor:pointer;
 }
-img{
+.image-card img{
   width:100%;
   border-radius:16px;
-  margin:25px 0;
   box-shadow:0 0 20px rgba(0,0,0,0.15);
-  cursor:pointer;
 }
 
 /* bottom overlay strip */
 .overlay{
   position:absolute;
-  bottom:35px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(0,0,0,0.7);
-  color:white;
-  padding:10px 20px;
-  border-radius:20px;
-  font-size:16px;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(255,255,255,0.95);
+  padding:14px 18px;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:10px;
+  border-radius:0 0 16px 16px;
+  font-size:18px;
+  font-weight:bold;
+}
+.arrow{
+  font-size:22px;
 }
 
 /* buttons */
@@ -98,6 +89,16 @@ img{
 
 /* projects page */
 #projectsPage{display:none;}
+
+/* admin panel */
+#adminPanel{
+  background:#f5f5f5;
+}
+#adminPanel input{
+  padding:10px;
+  font-size:16px;
+  width:250px;
+}
 </style>
 </head>
 
@@ -110,36 +111,47 @@ img{
 
 <!-- HERO -->
 <div class="section">
-  <h1>INNOVATIONUBH</h1>
+  <h1 id="mainTitle">INNOVATIONUBH</h1>
   <h2>WELCOME TO MY PORTFOLIO</h2>
 
   <p>
 Hi 👋 I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-I work on:
+I work on:<br>
 Health & safety devices<br>
 Smart sensor systems<br>
 Learning technology<br>
 Problem solving through innovation
   </p>
 
-  <div class="imgBox">
-    <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
-    <div class="overlay">About Me ➜</div>
+  <div class="image-card" onclick="openFull('Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg')">
+    <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
+    <div class="overlay">
+      <span>ABOUT ME</span>
+      <span class="arrow">➜</span>
+    </div>
   </div>
 </div>
 
-<!-- ABOUT / PROJECTS -->
+<!-- PAGE 2 -->
 <div class="section" id="page2">
-  <div class="imgBox">
-    <img src="1_20260227_193115_0000.jpg" onclick="openProjects()">
-    <div class="overlay">Projects ➜</div>
+
+  <div class="image-card" onclick="openProjects()">
+    <img src="1_20260227_193115_0000.jpg">
+    <div class="overlay">
+      <span>ARDUINO PROJECTS</span>
+      <span class="arrow">➜</span>
+    </div>
   </div>
 
-  <div class="imgBox">
-    <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
-    <div class="overlay">Skills ➜</div>
+  <div class="image-card" onclick="openFull('Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg')">
+    <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
+    <div class="overlay">
+      <span>SKILLS</span>
+      <span class="arrow">➜</span>
+    </div>
   </div>
+
 </div>
 
 <!-- PROJECT IMAGES -->
@@ -170,13 +182,10 @@ Problem solving through innovation
 </div>
 
 <!-- ADMIN PANEL -->
-<div class="section">
+<div class="section" id="adminPanel">
   <h1>ADMIN PANEL</h1>
-  <p>Only for website owner</p>
-
-  <input type="text" placeholder="Username"><br><br>
-  <input type="password" placeholder="Password"><br><br>
-  <button class="btn">Login</button>
+  <input type="text" id="titleInput" placeholder="Change main title"><br><br>
+  <button class="btn" onclick="updateTitle()">Update Title</button>
 </div>
 
 <script>
@@ -194,6 +203,10 @@ function openProjects(){
 function back(){
   document.getElementById("projectsPage").style.display="none";
   document.getElementById("page2").style.display="flex";
+}
+function updateTitle(){
+  let text=document.getElementById("titleInput").value;
+  document.getElementById("mainTitle").innerText=text;
 }
 </script>
 
