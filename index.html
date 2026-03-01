@@ -73,9 +73,33 @@ body{
   max-height:95%;
 }
 
-/* hidden pages */
-#projectsImages{
+/* carousel */
+.carousel{
+  width:100%;
+  max-width:600px;
+  position:relative;
+}
+.carousel img{
   display:none;
+}
+.carousel img.active{
+  display:block;
+}
+
+/* dots */
+.dots{
+  margin-top:10px;
+}
+.dot{
+  height:10px;
+  width:10px;
+  background:#bbb;
+  border-radius:50%;
+  display:inline-block;
+  margin:5px;
+}
+.dot.active{
+  background:#333;
 }
 </style>
 </head>
@@ -87,7 +111,7 @@ body{
   <img id="fullImg">
 </div>
 
-<!-- PAGE 1 (WELCOME) -->
+<!-- PAGE 1 -->
 <div class="section" id="page1">
   <h1>WELCOME</h1>
   <h2>TO MY PORTFOLIO</h2>
@@ -100,27 +124,29 @@ Smart sensor systems<br>
 Learning technology<br>
 Problem-solving through innovation
   </p>
-  <br>
   <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
   <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
-  <br><br>
   <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 </div>
 
 <!-- PROJECT IMAGES PAGE -->
-<div class="section" id="projectsImages">
+<div class="section" id="projectsImages" style="display:none;">
 
-  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
-  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
-  <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
-  <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
-  <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
-  <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
-  <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
+  <div class="carousel" id="carousel">
+    <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" class="active" onclick="openFull(this.src)">
+    <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
+    <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
+    <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
+    <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
+    <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
+    <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
+  </div>
+
+  <div class="dots" id="dots"></div>
 
   <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
@@ -132,12 +158,8 @@ Problem-solving through innovation
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name"><br><br>
   <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
   <button class="btn">Submit</button>
-
-  <h2>Admin</h2>
-  <button class="btn">Admin Login</button>
 </div>
 
 <script>
@@ -150,17 +172,42 @@ function closeFull(){
   document.getElementById("fullscreen").style.display="none";
 }
 
-/* open project images */
+/* open projects */
 function openProjectsImages(){
-  document.getElementById("page2").style.display="none";
-  document.getElementById("projectsImages").style.display="flex";
+  page2.style.display="none";
+  projectsImages.style.display="flex";
 }
 
 /* back */
 function backToPage2(){
-  document.getElementById("projectsImages").style.display="none";
-  document.getElementById("page2").style.display="flex";
+  projectsImages.style.display="none";
+  page2.style.display="flex";
 }
+
+/* carousel */
+let index=0;
+const images=document.querySelectorAll("#carousel img");
+const dotsContainer=document.getElementById("dots");
+
+images.forEach((_,i)=>{
+  let d=document.createElement("span");
+  d.className="dot"+(i==0?" active":"");
+  d.onclick=()=>showSlide(i);
+  dotsContainer.appendChild(d);
+});
+
+function showSlide(i){
+  images[index].classList.remove("active");
+  dotsContainer.children[index].classList.remove("active");
+  index=i;
+  images[index].classList.add("active");
+  dotsContainer.children[index].classList.add("active");
+}
+
+setInterval(()=>{
+  let next=(index+1)%images.length;
+  showSlide(next);
+},3000);
 </script>
 
 </body>
