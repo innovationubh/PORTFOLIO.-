@@ -30,7 +30,6 @@ body{
   box-shadow:0 0 20px rgba(0,0,0,0.25);
   cursor:pointer;
   animation:fadeZoom 1.5s ease;
-  margin-bottom:20px;
 }
 
 @keyframes fadeZoom{
@@ -41,11 +40,11 @@ body{
 /* buttons */
 .btn{
   margin:10px;
-  padding:12px 25px;
+  padding:14px 30px;
   border:none;
-  border-radius:20px;
+  border-radius:25px;
   background:#ffb703;
-  font-size:16px;
+  font-size:18px;
   cursor:pointer;
 }
 .btn:hover{background:#ffd166;}
@@ -74,32 +73,16 @@ body{
 }
 
 /* carousel */
-.carousel{
-  width:100%;
-  max-width:600px;
-  position:relative;
-}
-.carousel img{
-  display:none;
-}
-.carousel img.active{
-  display:block;
-}
+#projectsImages{display:none;}
+#carouselImg{max-width:90%;}
 
-/* dots */
-.dots{
-  margin-top:10px;
-}
-.dot{
-  height:10px;
-  width:10px;
-  background:#bbb;
-  border-radius:50%;
-  display:inline-block;
-  margin:5px;
-}
-.dot.active{
-  background:#333;
+/* admin panel */
+#adminPanel{
+  display:none;
+  background:white;
+  color:black;
+  padding:20px;
+  border-radius:20px;
 }
 </style>
 </head>
@@ -111,11 +94,11 @@ body{
   <img id="fullImg">
 </div>
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 (WELCOME) -->
 <div class="section" id="page1">
-  <h1>WELCOME</h1>
-  <h2>TO MY PORTFOLIO</h2>
-  <p>
+  <h1 style="font-size:42px;">WELCOME</h1>
+  <h2 style="font-size:32px;">TO MY PORTFOLIO</h2>
+  <p style="font-size:20px;">
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
 I like working on:<br>
@@ -124,30 +107,28 @@ Smart sensor systems<br>
 Learning technology<br>
 Problem-solving through innovation
   </p>
+  <br>
   <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
   <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
+  <br><br>
   <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- PROJECT IMAGES PAGE -->
-<div class="section" id="projectsImages" style="display:none;">
+<!-- PROJECT IMAGES (CAROUSEL) -->
+<div class="section" id="projectsImages">
+  <button class="btn" onclick="prevImg()">⬅ Prev</button>
 
-  <div class="carousel" id="carousel">
-    <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" class="active" onclick="openFull(this.src)">
-    <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
-    <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
-    <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
-    <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
-    <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
-    <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
-  </div>
+  <img id="carouselImg"
+       src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg"
+       onclick="openFull(this.src)">
 
-  <div class="dots" id="dots"></div>
+  <button class="btn" onclick="nextImg()">Next ➡</button>
 
+  <br><br>
   <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
 
@@ -158,8 +139,17 @@ Problem-solving through innovation
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn">Submit</button>
+  <input id="fname" type="text" placeholder="Your Name"><br><br>
+  <textarea id="ftext" rows="4" placeholder="Your Feedback"></textarea><br><br>
+  <button class="btn" onclick="saveFeedback()">Submit</button>
+
+  <h2>Admin</h2>
+  <button class="btn" onclick="adminLogin()">Admin Login</button>
+
+  <div id="adminPanel">
+    <h3>All Feedback</h3>
+    <pre id="allFeedback"></pre>
+  </div>
 </div>
 
 <script>
@@ -172,42 +162,62 @@ function closeFull(){
   document.getElementById("fullscreen").style.display="none";
 }
 
-/* open projects */
+/* carousel images */
+let imgs=[
+"Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg",
+"Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg",
+"1_20260301_141749_0000.jpg",
+"2_20260301_141749_0001.jpg",
+"3_20260301_141749_0002.jpg",
+"1_20260301_145414_0000.jpg",
+"2_20260301_145414_0001.jpg"
+];
+
+let i=0;
+
 function openProjectsImages(){
-  page2.style.display="none";
-  projectsImages.style.display="flex";
+  document.getElementById("page2").style.display="none";
+  document.getElementById("projectsImages").style.display="flex";
+  document.getElementById("carouselImg").src=imgs[i];
 }
 
-/* back */
+function nextImg(){
+  i=(i+1)%imgs.length;
+  document.getElementById("carouselImg").src=imgs[i];
+}
+
+function prevImg(){
+  i=(i-1+imgs.length)%imgs.length;
+  document.getElementById("carouselImg").src=imgs[i];
+}
+
 function backToPage2(){
-  projectsImages.style.display="none";
-  page2.style.display="flex";
+  document.getElementById("projectsImages").style.display="none";
+  document.getElementById("page2").style.display="flex";
 }
 
-/* carousel */
-let index=0;
-const images=document.querySelectorAll("#carousel img");
-const dotsContainer=document.getElementById("dots");
-
-images.forEach((_,i)=>{
-  let d=document.createElement("span");
-  d.className="dot"+(i==0?" active":"");
-  d.onclick=()=>showSlide(i);
-  dotsContainer.appendChild(d);
-});
-
-function showSlide(i){
-  images[index].classList.remove("active");
-  dotsContainer.children[index].classList.remove("active");
-  index=i;
-  images[index].classList.add("active");
-  dotsContainer.children[index].classList.add("active");
+/* feedback */
+function saveFeedback(){
+  let name=document.getElementById("fname").value;
+  let text=document.getElementById("ftext").value;
+  let old=localStorage.getItem("feedback") || "";
+  localStorage.setItem("feedback", old + "\n" + name + ": " + text);
+  alert("Feedback saved!");
+  document.getElementById("fname").value="";
+  document.getElementById("ftext").value="";
 }
 
-setInterval(()=>{
-  let next=(index+1)%images.length;
-  showSlide(next);
-},3000);
+/* admin */
+function adminLogin(){
+  let pass=prompt("Enter admin password:");
+  if(pass==="innovationstartshere"){
+    document.getElementById("adminPanel").style.display="block";
+    document.getElementById("allFeedback").textContent=
+      localStorage.getItem("feedback") || "No feedback yet.";
+  }else{
+    alert("Wrong password");
+  }
+}
 </script>
 
 </body>
