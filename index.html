@@ -2,74 +2,80 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>INNOVATIONUBH Portfolio</title>
+<title>INNOVATIONUBH</title>
 
 <style>
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  scroll-behavior:smooth;
   background:#ffffff;
+  color:#111;
+  scroll-behavior:smooth;
 }
 
-/* sections */
 .section{
   min-height:100vh;
+  padding:60px 20px;
   display:none;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
-  padding:30px;
   text-align:center;
 }
 
-/* show first page */
 #page1{display:flex;}
 
-/* images */
-.section img{
-  max-width:95%;
-  border-radius:20px;
-  box-shadow:0 0 20px rgba(0,0,0,0.15);
-  cursor:pointer;
-  animation:fadeZoom 1s ease;
-  margin-bottom:25px;
-}
-
-@keyframes fadeZoom{
-  from{opacity:0; transform:scale(0.95);}
-  to{opacity:1; transform:scale(1);}
-}
-
-/* text */
-h1{font-size:40px;}
+h1{font-size:42px;}
 h2{font-size:26px;}
-p{font-size:18px; line-height:1.6;}
+p{font-size:20px; max-width:800px; line-height:1.6;}
 
-/* buttons */
+/* image container */
+.img-box{
+  position:relative;
+  max-width:90%;
+  margin:25px 0;
+  cursor:pointer;
+}
+.img-box img{
+  width:100%;
+  border-radius:16px;
+  box-shadow:0 0 20px rgba(0,0,0,0.15);
+}
+
+/* overlay bar */
+.overlay{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.6);
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-radius:0 0 16px 16px;
+  font-size:18px;
+}
+.arrow{
+  font-size:22px;
+}
+
+/* button */
 .btn{
-  margin:15px;
-  padding:14px 28px;
+  padding:12px 25px;
   border:none;
-  border-radius:25px;
+  border-radius:20px;
   background:#ffb703;
   font-size:18px;
   cursor:pointer;
 }
 .btn:hover{background:#ffd166;}
 
-/* contact page */
-#contact{
-  background:#000;
-  color:white;
-}
-
-/* fullscreen image */
+/* fullscreen */
 #fullscreen{
   position:fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:black;
   display:none;
   justify-content:center;
@@ -85,7 +91,7 @@ p{font-size:18px; line-height:1.6;}
 
 <body>
 
-<!-- FULLSCREEN VIEW -->
+<!-- FULLSCREEN -->
 <div id="fullscreen" onclick="closeFull()">
   <img id="fullImg">
 </div>
@@ -94,29 +100,53 @@ p{font-size:18px; line-height:1.6;}
 <div class="section" id="page1">
   <h1>INNOVATIONUBH</h1>
   <h2>WELCOME TO MY PORTFOLIO</h2>
+
   <p>
-Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
+Hi 👋 I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-I like working on:<br>
-Health and safety devices<br>
+I work on:<br>
+Health & safety devices<br>
 Smart sensor systems<br>
 Learning technology<br>
-Problem-solving through innovation
+Problem solving through innovation
   </p>
-  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
-  <button class="btn" onclick="goPage('page2')">Next ➡</button>
+
+  <div class="img-box" onclick="openFull('Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg')">
+    <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
+    <div class="overlay">
+      <span>ABOUT ME</span>
+      <span class="arrow">➜</span>
+    </div>
+  </div>
+
+  <button class="btn" onclick="goPage('page2')">Next ➜</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
-  <img src="1_20260227_193115_0000.jpg" onclick="openProjects()">
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
+
+  <div class="img-box" onclick="openProjects()">
+    <img src="1_20260227_193115_0000.jpg">
+    <div class="overlay">
+      <span>ARDUINO PROJECTS</span>
+      <span class="arrow">➜</span>
+    </div>
+  </div>
+
+  <div class="img-box" onclick="openFull('Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg')">
+    <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
+    <div class="overlay">
+      <span>SKILLS</span>
+      <span class="arrow">➜</span>
+    </div>
+  </div>
+
   <button class="btn" onclick="goPage('page1')">⬅ Back</button>
 </div>
 
 <!-- PROJECTS PAGE -->
 <div class="section" id="projectsPage">
-  <h2>MY PROJECTS</h2>
+  <h1>MY PROJECTS</h1>
 
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
@@ -129,19 +159,24 @@ Problem-solving through innovation
   <button class="btn" onclick="goPage('page2')">⬅ Back</button>
 </div>
 
-<!-- CONTACT PAGE -->
-<div class="section" id="contact">
-  <h1>Contact & Feedback</h1>
+<!-- ADMIN PANEL -->
+<div class="section" id="adminPage">
+  <h1>ADMIN PANEL</h1>
+
+  <input type="text" placeholder="Username"><br><br>
+  <input type="password" placeholder="Password"><br><br>
+  <button class="btn">Login</button><br><br>
+
+  <button class="btn" onclick="goPage('page2')">⬅ Back</button>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contactPage">
+  <h1>CONTACT</h1>
   <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
-  <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name"><br><br>
-  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn">Submit</button>
-
-  <h2>Admin</h2>
-  <button class="btn">Admin Login</button>
+  <button class="btn" onclick="goPage('adminPage')">Admin Panel</button>
 </div>
 
 <script>
@@ -163,7 +198,6 @@ function openProjects(){
   window.scrollTo(0,0);
 }
 
-/* fullscreen */
 function openFull(src){
   document.getElementById("fullscreen").style.display="flex";
   document.getElementById("fullImg").src=src;
