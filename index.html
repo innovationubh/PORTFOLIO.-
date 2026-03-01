@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Yuvraj Portfolio</title>
+<title>Innovationubh</title>
 
 <style>
 body{
@@ -19,60 +19,42 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  padding:10px;
+  padding:20px;
   text-align:center;
 }
 
-/* image box */
-.imgBox{
-  position:relative;
-  width:95%;
-  margin:10px 0;
-}
-.imgBox img{
-  width:100%;
+/* images */
+.section img{
+  max-width:95%;
   border-radius:20px;
   box-shadow:0 0 20px rgba(0,0,0,0.25);
   cursor:pointer;
-  animation:fadeZoom 1.5s ease;
+  animation:fadeZoom 1.2s ease;
+  margin-bottom:10px;
 }
 
-/* overlay title bar */
-.imgTitle{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.6);
-  color:white;
-  padding:12px 16px;
-  font-size:18px;
-  border-radius:0 0 20px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.arrowIcon{
-  font-size:20px;
-}
-
-/* animation */
 @keyframes fadeZoom{
   from{opacity:0; transform:scale(0.9);}
   to{opacity:1; transform:scale(1);}
 }
 
-/* buttons */
-.btn{
-  margin:10px;
-  padding:12px 25px;
-  border:none;
-  border-radius:20px;
-  background:#ffb703;
-  font-size:16px;
-  cursor:pointer;
+/* overlay bar */
+.overlay{
+  width:95%;
+  background:rgba(0,0,0,0.6);
+  color:white;
+  padding:15px;
+  border-radius:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:-60px;
+  margin-bottom:20px;
 }
-.btn:hover{background:#ffd166;}
+
+.arrow{
+  font-size:22px;
+}
 
 /* contact page */
 #contact{
@@ -97,7 +79,7 @@ body{
   max-height:95%;
 }
 
-/* hidden project page */
+/* hidden */
 #projectsImages{
   display:none;
 }
@@ -126,31 +108,24 @@ Learning technology<br>
 Problem-solving through innovation
   </p>
 
-  <div class="imgBox">
-    <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
-    <div class="imgTitle">
-      ABOUT ME <span class="arrowIcon">↗</span>
-    </div>
-  </div>
+  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
+  <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
 
-  <div class="imgBox">
-    <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
-    <div class="imgTitle">
-      ARDUINO PROJECTS <span class="arrowIcon">↗</span>
-    </div>
+  <div class="overlay">
+    <span>ARDUINO PROJECTS</span>
+    <span class="arrow">➜</span>
   </div>
 
-  <div class="imgBox">
-    <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
-    <div class="imgTitle">
-      SKILLS <span class="arrowIcon">↗</span>
-    </div>
-  </div>
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 
+  <div class="overlay">
+    <span>SKILLS</span>
+    <span class="arrow">➜</span>
+  </div>
 </div>
 
 <!-- PROJECT IMAGES PAGE -->
@@ -164,7 +139,7 @@ Problem-solving through innovation
   <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
   <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
 
-  <button class="btn" onclick="backToPage2()">⬅ Back</button>
+  <button onclick="backToPage2()">⬅ Back</button>
 </div>
 
 <!-- PAGE 3 -->
@@ -176,10 +151,10 @@ Problem-solving through innovation
   <h2>Feedback</h2>
   <input type="text" placeholder="Your Name"><br><br>
   <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn">Submit</button>
+  <button>Submit</button>
 
   <h2>Admin</h2>
-  <button class="btn">Admin Login</button>
+  <button>Admin Login</button>
 </div>
 
 <script>
@@ -187,6 +162,7 @@ function openFull(src){
   document.getElementById("fullscreen").style.display="flex";
   document.getElementById("fullImg").src=src;
 }
+
 function closeFull(){
   document.getElementById("fullscreen").style.display="none";
 }
@@ -203,4 +179,4 @@ function backToPage2(){
 </script>
 
 </body>
-    </html>
+</html>
