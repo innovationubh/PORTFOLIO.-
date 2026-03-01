@@ -1,71 +1,96 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Innovation Portfolio</title>
+<title>Yuvraj Portfolio</title>
 
 <style>
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  background: linear-gradient(270deg,#eef2f3,#ffffff,#f9f9d2,#ffd6e0);
-  background-size:800% 800%;
-  animation:bg 15s ease infinite;
+  scroll-behavior:smooth;
+  background:white;
+}
+
+/* sections */
+.section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:20px;
   text-align:center;
 }
-@keyframes bg{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+
+/* images */
+.section img{
+  max-width:95%;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(0,0,0,0.25);
+  cursor:pointer;
+  animation:fadeZoom 1.5s ease;
+  margin-bottom:20px;
 }
-.section{padding:40px;}
-.hidden{display:none;}
 
-h1{font-size:48px;}
-h2{font-size:36px;}
-p{font-size:22px;line-height:1.7;}
+@keyframes fadeZoom{
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:1; transform:scale(1);}
+}
 
-button{
-  display:block;
-  margin:14px auto;
-  padding:14px 36px;
-  font-size:20px;
+/* buttons */
+.btn{
+  margin:10px;
+  padding:12px 25px;
   border:none;
-  border-radius:12px;
-  background:pink;
+  border-radius:20px;
+  background:#ffb703;
+  font-size:16px;
   cursor:pointer;
 }
+.btn:hover{background:#ffd166;}
 
-img{
-  width:85%;
-  max-width:420px;
-  border-radius:18px;
-  margin:20px auto;
-  display:block;
-  animation:fade 1.2s;
-  box-shadow:0 0 20px rgba(255,120,180,0.6);
-  cursor:pointer;
+/* contact page */
+#contact{
+  background:black;
+  color:white;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:scale(0.9)}
-  to{opacity:1;transform:scale(1)}
+/* fullscreen image */
+#fullscreen{
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+#fullscreen img{
+  max-width:95%;
+  max-height:95%;
 }
 
-textarea{
-  width:80%;
-  height:100px;
-  font-size:18px;
+/* hidden pages */
+#projectsImages{
+  display:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
-<div id="menu" class="section">
-  <h1>WELCOME<br>TO MY PORTFOLIO</h1>
+<!-- FULLSCREEN VIEW -->
+<div id="fullscreen" onclick="closeFull()">
+  <img id="fullImg">
+</div>
 
+<!-- PAGE 1 (WELCOME) -->
+<div class="section" id="page1">
+  <h1>WELCOME</h1>
+  <h2>TO MY PORTFOLIO</h2>
   <p>
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
@@ -75,60 +100,66 @@ Smart sensor systems<br>
 Learning technology<br>
 Problem-solving through innovation
   </p>
-
-  <button onclick="show('about')">About Me</button>
-  <button onclick="show('projects')">Projects</button>
-  <button onclick="show('skills')">Skills</button>
-  <button onclick="show('contact')">Contact</button>
+  <br>
+  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- ABOUT -->
-<div id="about" class="section hidden">
-  <h2>About Me</h2>
-  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
-  <p>
-This portfolio shows my journey, projects and skills as I move forward step by step.
-  </p>
-  <button onclick="back()">⬅ Back</button>
+<!-- PAGE 2 -->
+<div class="section" id="page2">
+  <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
+  <br><br>
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- PROJECTS -->
-<div id="projects" class="section hidden">
-  <h2>My Projects</h2>
-  <img src="1_20260227_193115_0000.jpg">
-  <button onclick="back()">⬅ Back</button>
+<!-- PROJECT IMAGES PAGE -->
+<div class="section" id="projectsImages">
+
+  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
+  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
+  <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
+  <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
+  <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
+  <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
+  <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
+
+  <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
 
-<!-- SKILLS -->
-<div id="skills" class="section hidden">
-  <h2>My Skills</h2>
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
-  <p>
-Electronics • Arduino • Sensors • Innovation • Communication
-  </p>
-  <button onclick="back()">⬅ Back</button>
-</div>
+<!-- PAGE 3 -->
+<div class="section" id="contact">
+  <h1>Contact & Feedback</h1>
+  <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
+  <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
-<!-- CONTACT -->
-<div id="contact" class="section hidden">
-  <h2>Contact</h2>
-  <p>📧 Gmail: example@gmail.com<br>📸 Instagram: yuvraj.sahu369</p>
+  <h2>Feedback</h2>
+  <input type="text" placeholder="Your Name"><br><br>
+  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
+  <button class="btn">Submit</button>
 
-  <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
-  <button onclick="save()">Submit Feedback</button>
-  <button onclick="back()">⬅ Back</button>
+  <h2>Admin</h2>
+  <button class="btn">Admin Login</button>
 </div>
 
 <script>
-function show(id){
-  document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
+/* fullscreen */
+function openFull(src){
+  document.getElementById("fullscreen").style.display="flex";
+  document.getElementById("fullImg").src=src;
 }
-function back(){ show('menu'); }
+function closeFull(){
+  document.getElementById("fullscreen").style.display="none";
+}
 
-function save(){
-  localStorage.setItem("feedback",document.getElementById("fb").value);
-  alert("Feedback saved");
+/* open project images */
+function openProjectsImages(){
+  document.getElementById("page2").style.display="none";
+  document.getElementById("projectsImages").style.display="flex";
+}
+
+/* back */
+function backToPage2(){
+  document.getElementById("projectsImages").style.display="none";
+  document.getElementById("page2").style.display="flex";
 }
 </script>
 
