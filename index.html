@@ -5,7 +5,7 @@
 <title>My Innovation Portfolio</title>
 
 <style>
-body{
+body {
   margin:0;
   font-family:Arial, sans-serif;
   background: linear-gradient(270deg,#eef2f3,#ffffff,#f9f9d2,#ffd6e0);
@@ -13,20 +13,51 @@ body{
   animation:bg 15s ease infinite;
   text-align:center;
 }
-@keyframes bg{
+@keyframes bg {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
 
-.section{padding:40px;}
-.hidden{display:none;}
+.section {
+  padding:40px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+.section.show {
+  opacity:1;
+  transform:translateY(0);
+}
+.hidden { display:none; }
 
-h1{font-size:42px;}
-h2{font-size:32px;}
-p{font-size:20px; line-height:1.6;}
+h1 {
+  font-size:56px;
+  font-weight:bold;
+  animation:fadeIn 2s ease;
+}
+h2 {
+  font-size:36px;
+  animation:fadeIn 2s ease;
+}
+p {
+  font-size:24px;
+  line-height:1.8;
+  max-width:900px;
+  margin:0 auto;
+  animation:fadeIn 2s ease;
+}
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to   {opacity:1; transform:translateY(0);}
+}
 
-button{
+button {
   display:block;
   margin:14px auto;
   padding:14px 34px;
@@ -35,40 +66,81 @@ button{
   border-radius:12px;
   background:pink;
   cursor:pointer;
+  animation:slideUp 1.2s ease;
+}
+@keyframes slideUp {
+  from {opacity:0; transform:translateY(40px);}
+  to   {opacity:1; transform:translateY(0);}
 }
 
-.project-img{
+.project-img {
   width:90%;
   max-width:350px;
   margin:20px auto;
   display:block;
   border-radius:18px;
-  animation:fade 1.5s;
+  animation:fade 1.5s, pulseGlow 3s infinite;
   box-shadow:0 0 18px rgba(255,120,180,0.7);
   cursor:pointer;
 }
-
-@keyframes fade{
-  from{opacity:0;transform:scale(0.9)}
-  to{opacity:1;transform:scale(1)}
+@keyframes fade {
+  from{opacity:0; transform:scale(0.9)}
+  to{opacity:1; transform:scale(1)}
+}
+@keyframes pulseGlow {
+  0%   {box-shadow:0 0 18px rgba(255,120,180,0.7);}
+  50%  {box-shadow:0 0 28px rgba(255,120,180,1);}
+  100% {box-shadow:0 0 18px rgba(255,120,180,0.7);}
 }
 
-textarea{
+textarea {
   width:85%;
   height:100px;
   font-size:16px;
   border-radius:10px;
   padding:10px;
 }
+
+/* Carousel */
+.carousel {
+  position:relative;
+  width:90%;
+  max-width:600px;
+  margin:0 auto;
+  overflow:hidden;
+  border-radius:18px;
+  box-shadow:0 0 18px rgba(255,120,180,0.7);
+}
+.carousel-track {
+  display:flex;
+  transition:transform 0.6s ease;
+}
+.carousel img {
+  width:100%;
+  flex-shrink:0;
+  border-radius:18px;
+}
+.carousel-btn {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,192,203,0.8);
+  border:none;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:20px;
+}
+.carousel-btn.left { left:10px; }
+.carousel-btn.right { right:10px; }
 </style>
 </head>
 
 <body>
 
 <!-- HOME -->
-<div id="menu" class="section">
+<div id="menu" class="section show">
   <h1>WELCOME<br>TO MY PORTFOLIO</h1>
-
   <p>
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
@@ -78,102 +150,119 @@ Smart sensor systems<br>
 Learning technology<br>
 Problem-solving through innovation
   </p>
-
   <button onclick="show('projects')">Projects</button>
   <button onclick="show('skills')">Skills</button>
   <button onclick="show('contact')">Contact</button>
+  <button onclick="adminLogin()">Admin</button>
 </div>
 
 <!-- PROJECTS -->
 <div id="projects" class="section hidden">
   <h2>My Projects</h2>
-
-  <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg"
-       class="project-img"
-       onclick="openFull(this.src)">
-
-  <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg"
-       class="project-img"
-       onclick="openFull(this.src)">
-
+  <div class="carousel">
+    <div class="carousel-track" id="carouselTrack">
+      <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
+      <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
+    </div>
+    <button class="carousel-btn left" onclick="moveSlide(-1)">⬅</button>
+    <button class="carousel-btn right" onclick="moveSlide(1)">➡</button>
+  </div>
   <button onclick="back()">⬅ Back</button>
 </div>
 
 <!-- SKILLS -->
 <div id="skills" class="section hidden">
   <h2>My Skills</h2>
-
   <p>
 🔧 Technical Skills<br>
 Basic electronics, Arduino, sensors, hardware–software integration<br><br>
-
 💻 Software Skills<br>
 Simple web projects, GitHub, logical workflows<br><br>
-
 🎬 Creative Skills<br>
 Animation, motion design, visual ideas<br><br>
-
 🗣️ Communication Skills<br>
 Clear explanation, documentation, presentation<br><br>
-
 🌟 Core Strength<br>
 Tech + creativity + innovation<br>
 Continuous learner
   </p>
-
   <button onclick="back()">⬅ Back</button>
 </div>
 
 <!-- CONTACT -->
 <div id="contact" class="section hidden">
   <h2>Contact</h2>
-
   <p>
 📧 Gmail: example@gmail.com<br>
 📸 Instagram: yuvraj.sahu369
   </p>
-
   <h3>Feedback</h3>
   <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
   <button onclick="save()">Submit Feedback</button>
   <button onclick="back()">⬅ Back</button>
 </div>
 
+<!-- ADMIN -->
+<div id="admin" class="section hidden">
+  <h2>🔒 Admin Panel</h2>
+  <p>Welcome, Admin! Here you can manage your portfolio.</p>
+  <h3>Feedback Viewer</h3>
+  <p id="feedbackDisplay">No feedback yet.</p>
+  <button onclick="clearFeedback()">🗑 Clear Feedback</button>
+  <button onclick="back()">⬅ Back</button>
+</div>
+
 <script>
 function show(id){
-  document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
+  document.querySelectorAll('.section').forEach(s=>{
+    s.classList.remove('show');
+    s.classList.add('hidden');
+  });
+  let target=document.getElementById(id);
+  target.classList.remove('hidden');
+  setTimeout(()=>target.classList.add('show'),50);
 }
 function back(){ show('menu'); }
 
 function openFull(src){
   let f=document.createElement("div");
   f.style.position="fixed";
-  f.style.top=0;
-  f.style.left=0;
-  f.style.width="100%";
-  f.style.height="100%";
+  f.style.top=0; f.style.left=0;
+  f.style.width="100%"; f.style.height="100%";
   f.style.background="rgba(0,0,0,0.9)";
   f.style.display="flex";
   f.style.alignItems="center";
   f.style.justifyContent="center";
   f.onclick=()=>f.remove();
-
   let img=document.createElement("img");
   img.src=src;
   img.style.maxWidth="95%";
   img.style.maxHeight="95%";
   img.style.borderRadius="20px";
-
   f.appendChild(img);
   document.body.appendChild(f);
 }
 
 function save(){
-  localStorage.setItem("feedback",document.getElementById("fb").value);
+  let fbText=document.getElementById("fb").value;
+  if(fbText.trim()===""){alert("Please write feedback before submitting.");return;}
+  let timestamp=new Date().toLocaleString();
+  let feedbackEntry=fbText+" (submitted on "+timestamp+")";
+  localStorage.setItem("feedback",feedbackEntry);
   alert("Feedback saved");
 }
-</script>
 
-</body>
-</html>
+function adminLogin(){
+  let pass=prompt("Enter admin password:");
+  if(pass==="innovationstartshere"){
+    show('admin');
+    let fb=localStorage.getItem("feedback");
+    document.getElementById("feedbackDisplay").innerText=fb?fb:"No feedback yet.";
+  } else {
+    alert("Wrong password");
+  }
+}
+
+function clearFeedback(){
+  localStorage.removeItem("feedback");
+  document.getElementById
