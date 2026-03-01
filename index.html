@@ -16,14 +16,12 @@ body{
 .section{
   min-height:100vh;
   padding:60px 20px;
-  display:none;
+  display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
 }
-
-#page1{display:flex;}
 
 h1{font-size:42px;}
 h2{font-size:26px;}
@@ -67,7 +65,7 @@ p{font-size:20px; max-width:800px; line-height:1.6;}
   border:none;
   border-radius:20px;
   background:#ffb703;
-  font-size:18px;
+  font-size:16px;
   cursor:pointer;
 }
 .btn:hover{background:#ffd166;}
@@ -86,6 +84,9 @@ p{font-size:20px; max-width:800px; line-height:1.6;}
   max-width:95%;
   max-height:95%;
 }
+
+/* hidden pages */
+#projectsPage, #adminPage{display:none;}
 </style>
 </head>
 
@@ -97,20 +98,21 @@ p{font-size:20px; max-width:800px; line-height:1.6;}
 </div>
 
 <!-- PAGE 1 -->
-<div class="section" id="page1">
+<div class="section">
   <h1>INNOVATIONUBH</h1>
   <h2>WELCOME TO MY PORTFOLIO</h2>
 
   <p>
 Hi 👋 I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-I work on:<br>
+I work on:
 Health & safety devices<br>
 Smart sensor systems<br>
 Learning technology<br>
 Problem solving through innovation
   </p>
 
+  <!-- 1st IMAGE WITH OVERLAY -->
   <div class="img-box" onclick="openFull('Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg')">
     <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
     <div class="overlay">
@@ -118,13 +120,12 @@ Problem solving through innovation
       <span class="arrow">➜</span>
     </div>
   </div>
-
-  <button class="btn" onclick="goPage('page2')">Next ➜</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
 
+  <!-- 2nd IMAGE WITH OVERLAY -->
   <div class="img-box" onclick="openProjects()">
     <img src="1_20260227_193115_0000.jpg">
     <div class="overlay">
@@ -133,6 +134,7 @@ Problem solving through innovation
     </div>
   </div>
 
+  <!-- 3rd IMAGE WITH OVERLAY -->
   <div class="img-box" onclick="openFull('Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg')">
     <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
     <div class="overlay">
@@ -141,7 +143,6 @@ Problem solving through innovation
     </div>
   </div>
 
-  <button class="btn" onclick="goPage('page1')">⬅ Back</button>
 </div>
 
 <!-- PROJECTS PAGE -->
@@ -156,7 +157,7 @@ Problem solving through innovation
   <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
   <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
 
-  <button class="btn" onclick="goPage('page2')">⬅ Back</button>
+  <button class="btn" onclick="back()">⬅ Back</button>
 </div>
 
 <!-- ADMIN PANEL -->
@@ -167,43 +168,39 @@ Problem solving through innovation
   <input type="password" placeholder="Password"><br><br>
   <button class="btn">Login</button><br><br>
 
-  <button class="btn" onclick="goPage('page2')">⬅ Back</button>
+  <button class="btn" onclick="back()">⬅ Back</button>
 </div>
 
 <!-- CONTACT -->
-<div class="section" id="contactPage">
+<div class="section">
   <h1>CONTACT</h1>
   <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
-  <button class="btn" onclick="goPage('adminPage')">Admin Panel</button>
+  <button class="btn" onclick="openAdmin()">Admin Panel</button>
 </div>
 
 <script>
-function hideAll(){
-  document.querySelectorAll(".section").forEach(sec=>{
-    sec.style.display="none";
-  });
-}
-
-function goPage(id){
-  hideAll();
-  document.getElementById(id).style.display="flex";
-  window.scrollTo(0,0);
-}
-
-function openProjects(){
-  hideAll();
-  document.getElementById("projectsPage").style.display="flex";
-  window.scrollTo(0,0);
-}
-
 function openFull(src){
   document.getElementById("fullscreen").style.display="flex";
   document.getElementById("fullImg").src=src;
 }
 function closeFull(){
   document.getElementById("fullscreen").style.display="none";
+}
+function openProjects(){
+  document.getElementById("page2").style.display="none";
+  document.getElementById("projectsPage").style.display="flex";
+}
+function openAdmin(){
+  document.getElementById("projectsPage").style.display="none";
+  document.getElementById("page2").style.display="none";
+  document.getElementById("adminPage").style.display="flex";
+}
+function back(){
+  document.getElementById("projectsPage").style.display="none";
+  document.getElementById("adminPage").style.display="none";
+  document.getElementById("page2").style.display="flex";
 }
 </script>
 
