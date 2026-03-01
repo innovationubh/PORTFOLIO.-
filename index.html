@@ -2,94 +2,73 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Yuvraj Portfolio</title>
+<title>My Innovation Portfolio</title>
 
 <style>
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  scroll-behavior:smooth;
-  background:white;
-}
-
-/* sections */
-.section{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  padding:20px;
+  background: linear-gradient(270deg,#eef2f3,#ffffff,#f9f9d2,#ffd6e0);
+  background-size:800% 800%;
+  animation:bg 15s ease infinite;
   text-align:center;
 }
-
-/* images */
-.section img{
-  max-width:95%;
-  border-radius:20px;
-  box-shadow:0 0 20px rgba(0,0,0,0.25);
-  cursor:pointer;
-  animation:fadeZoom 1.5s ease;
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-@keyframes fadeZoom{
-  from{opacity:0; transform:scale(0.9);}
-  to{opacity:1; transform:scale(1);}
-}
+.section{padding:40px;}
+.hidden{display:none;}
 
-/* buttons */
-.btn{
-  margin:10px;
-  padding:12px 25px;
+h1{font-size:42px;}
+h2{font-size:32px;}
+p{font-size:20px; line-height:1.6;}
+
+button{
+  display:block;
+  margin:14px auto;
+  padding:14px 34px;
+  font-size:18px;
   border:none;
-  border-radius:20px;
-  background:#ffb703;
-  font-size:16px;
+  border-radius:12px;
+  background:pink;
   cursor:pointer;
 }
-.btn:hover{background:#ffd166;}
 
-/* contact page */
-#contact{
-  background:black;
-  color:white;
+.project-img{
+  width:90%;
+  max-width:350px;
+  margin:20px auto;
+  display:block;
+  border-radius:18px;
+  animation:fade 1.5s;
+  box-shadow:0 0 18px rgba(255,120,180,0.7);
+  cursor:pointer;
 }
 
-/* fullscreen image */
-#fullscreen{
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  background:black;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
-}
-#fullscreen img{
-  max-width:95%;
-  max-height:95%;
+@keyframes fade{
+  from{opacity:0;transform:scale(0.9)}
+  to{opacity:1;transform:scale(1)}
 }
 
-/* project list */
-#projectsList, #projectDetail{
-  display:none;
+textarea{
+  width:85%;
+  height:100px;
+  font-size:16px;
+  border-radius:10px;
+  padding:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- FULLSCREEN VIEW -->
-<div id="fullscreen" onclick="closeFull()">
-  <img id="fullImg">
-</div>
+<!-- HOME -->
+<div id="menu" class="section">
+  <h1>WELCOME<br>TO MY PORTFOLIO</h1>
 
-<!-- PAGE 1 (WELCOME) -->
-<div class="section" id="page1">
-  <h1>WELCOME</h1>
-  <h2>TO MY PORTFOLIO</h2>
   <p>
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
@@ -99,188 +78,100 @@ Smart sensor systems<br>
 Learning technology<br>
 Problem-solving through innovation
   </p>
-  <br>
-  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
+
+  <button onclick="show('projects')">Projects</button>
+  <button onclick="show('skills')">Skills</button>
+  <button onclick="show('contact')">Contact</button>
 </div>
 
-<!-- PAGE 2 -->
-<div class="section" id="page2">
-  <img src="1_20260227_193115_0000.jpg" onclick="openProjects()">
-  <br><br>
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
-</div>
-
-<!-- PROJECTS FLASHCARDS -->
-<div class="section" id="projectsList">
+<!-- PROJECTS -->
+<div id="projects" class="section hidden">
   <h2>My Projects</h2>
-  <button class="btn" onclick="showProject(1)">Rehabilitation Support Device</button>
-  <button class="btn" onclick="showProject(2)">Emotional Regulation System</button>
-  <button class="btn" onclick="showProject(3)">Bias Detection System</button>
-  <button class="btn" onclick="showProject(4)">Smart Safety Watch</button>
-  <button class="btn" onclick="showProject(5)">Learning Projector App</button>
-  <button class="btn" onclick="backToPage2()">⬅ Back</button>
+
+  <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg"
+       class="project-img"
+       onclick="openFull(this.src)">
+
+  <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg"
+       class="project-img"
+       onclick="openFull(this.src)">
+
+  <button onclick="back()">⬅ Back</button>
 </div>
 
-<!-- PROJECT DETAIL -->
-<div class="section" id="projectDetail"></div>
+<!-- SKILLS -->
+<div id="skills" class="section hidden">
+  <h2>My Skills</h2>
 
-<!-- PAGE 3 -->
-<div class="section" id="contact">
-  <h1>Contact & Feedback</h1>
-  <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
-  <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
+  <p>
+🔧 Technical Skills<br>
+Basic electronics, Arduino, sensors, hardware–software integration<br><br>
 
-  <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name"><br><br>
-  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn">Submit</button>
+💻 Software Skills<br>
+Simple web projects, GitHub, logical workflows<br><br>
 
-  <h2>Admin</h2>
-  <button class="btn">Admin Login</button>
+🎬 Creative Skills<br>
+Animation, motion design, visual ideas<br><br>
+
+🗣️ Communication Skills<br>
+Clear explanation, documentation, presentation<br><br>
+
+🌟 Core Strength<br>
+Tech + creativity + innovation<br>
+Continuous learner
+  </p>
+
+  <button onclick="back()">⬅ Back</button>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section hidden">
+  <h2>Contact</h2>
+
+  <p>
+📧 Gmail: example@gmail.com<br>
+📸 Instagram: yuvraj.sahu369
+  </p>
+
+  <h3>Feedback</h3>
+  <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
+  <button onclick="save()">Submit Feedback</button>
+  <button onclick="back()">⬅ Back</button>
 </div>
 
 <script>
-/* fullscreen */
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+function back(){ show('menu'); }
+
 function openFull(src){
-  document.getElementById("fullscreen").style.display="flex";
-  document.getElementById("fullImg").src=src;
-}
-function closeFull(){
-  document.getElementById("fullscreen").style.display="none";
-}
+  let f=document.createElement("div");
+  f.style.position="fixed";
+  f.style.top=0;
+  f.style.left=0;
+  f.style.width="100%";
+  f.style.height="100%";
+  f.style.background="rgba(0,0,0,0.9)";
+  f.style.display="flex";
+  f.style.alignItems="center";
+  f.style.justifyContent="center";
+  f.onclick=()=>f.remove();
 
-/* open projects */
-function openProjects(){
-  document.getElementById("page2").style.display="none";
-  document.getElementById("projectsList").style.display="flex";
-}
+  let img=document.createElement("img");
+  img.src=src;
+  img.style.maxWidth="95%";
+  img.style.maxHeight="95%";
+  img.style.borderRadius="20px";
 
-/* back */
-function backToPage2(){
-  document.getElementById("projectsList").style.display="none";
-  document.getElementById("page2").style.display="flex";
-}
-
-/* project details */
-function showProject(n){
-  let data={
-1:`Rehabilitation Support Device<br><br>
-Problem: Patients need repeated guided exercises after injury or surgery.<br>
-The device is worn on arm or leg.<br>
-Motion sensors measure movement angle and speed.<br>
-Microcontroller processes data.<br>
-Correct motion gives OK signal.<br>
-Wrong motion triggers buzzer or LED.<br>
-Progress can be tracked on phone.<br>
-Used for home physiotherapy.<br>
-Improves recovery accuracy.<br>
-Reduces dependence on therapist.<br>
-Motivates patient to exercise.<br>
-Portable and light-weight.<br>
-Works on battery.<br>
-Helps avoid wrong posture.<br>
-Can store exercise data.<br>
-Low cost rehabilitation aid.<br>
-Educational medical device.<br>
-Future: AI posture correction.<br>
-Purpose: Safer rehabilitation training.`,
-
-2:`Emotional Regulation System<br><br>
-Problem: People do not notice emotional imbalance.<br>
-Heart rate sensor collects pulse data.<br>
-Skin response sensor detects stress level.<br>
-System checks unusual patterns.<br>
-Detects stress, fear, excitement, insecurity.<br>
-Compares with normal state.<br>
-If imbalance found, feedback is given.<br>
-Sound or vibration calms user.<br>
-Visual message guides breathing.<br>
-Improves emotional awareness.<br>
-Trains self-control ability.<br>
-Useful for students and workers.<br>
-Can connect to mobile app.<br>
-Tracks emotional trends.<br>
-Helps mental fitness.<br>
-Low power device.<br>
-Can be wearable.<br>
-Future: emotion prediction AI.<br>
-Purpose: emotional self-regulation.`,
-
-3:`Bias Detection System<br><br>
-Problem: People make biased decisions unknowingly.<br>
-User answers simple questions.<br>
-System records response pattern.<br>
-Time taken is measured.<br>
-GPS detects location (mall, market, office).<br>
-Behavior compared with past data.<br>
-Location-based bias found.<br>
-Repeated unfair pattern flagged.<br>
-System shows warning message.<br>
-Suggests neutral thinking.<br>
-Builds self-awareness.<br>
-Used in social studies.<br>
-Helps fair judgement.<br>
-Data stored securely.<br>
-Can be mobile app based.<br>
-Future: psychology research tool.<br>
-AI pattern detection possible.<br>
-Educational purpose.<br>
-Goal: reduce bias.`,
-
-4:`Smart Safety Watch<br><br>
-Problem: Elderly and riders face risk.<br>
-Heart rate sensor monitors pulse.<br>
-Accelerometer detects fall.<br>
-Sudden drop in heart rate alerts user.<br>
-Emergency mode can be triggered.<br>
-GPS sends location.<br>
-Message sent to family.<br>
-Camera can record surroundings.<br>
-Drowsiness detection for riders.<br>
-Impact detection in accident.<br>
-Auto emergency call.<br>
-Portable wearable device.<br>
-Battery powered.<br>
-Life saving design.<br>
-Helps during accidents.<br>
-Useful for night travel.<br>
-Works with phone.<br>
-Future: health prediction.<br>
-Purpose: personal safety.`,
-
-5:`Learning Projector App<br><br>
-Problem: Students struggle to find topic videos.<br>
-Camera scans textbook page.<br>
-OCR reads topic name.<br>
-App searches internet.<br>
-Filters syllabus related videos.<br>
-Shows best learning results.<br>
-Supports animations.<br>
-Helps self-study.<br>
-Reduces search time.<br>
-Smart learning tool.<br>
-Works on smartphone.<br>
-Uses internet API.<br>
-Can be connected to projector.<br>
-Visual learning supported.<br>
-Good for classrooms.<br>
-AI topic matching possible.<br>
-Future: offline mode.<br>
-Educational software tool.<br>
-Purpose: smart education.`
-  };
-
-  document.getElementById("projectDetail").innerHTML =
-    "<h2>Project Details</h2><p>"+data[n]+"</p><button class='btn' onclick='backToProjects()'>⬅ Back</button>";
-
-  document.getElementById("projectsList").style.display="none";
-  document.getElementById("projectDetail").style.display="flex";
+  f.appendChild(img);
+  document.body.appendChild(f);
 }
 
-/* back from detail */
-function backToProjects(){
-  document.getElementById("projectDetail").style.display="none";
-  document.getElementById("projectsList").style.display="flex";
+function save(){
+  localStorage.setItem("feedback",document.getElementById("fb").value);
+  alert("Feedback saved");
 }
 </script>
 
