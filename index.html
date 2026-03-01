@@ -39,100 +39,54 @@ body {
 h1 {
   font-size:56px;
   font-weight:bold;
-  animation:fadeIn 2s ease;
+  margin-bottom:20px;
 }
 h2 {
-  font-size:36px;
-  animation:fadeIn 2s ease;
+  font-size:32px;
+  margin-bottom:15px;
 }
 p {
-  font-size:24px;
-  line-height:1.8;
+  font-size:20px;
+  line-height:1.6;
   max-width:900px;
-  margin:0 auto;
-  animation:fadeIn 2s ease;
-}
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to   {opacity:1; transform:translateY(0);}
+  margin:0 auto 20px auto;
 }
 
 button {
   display:block;
-  margin:14px auto;
+  margin:12px auto;
   padding:14px 34px;
   font-size:18px;
   border:none;
   border-radius:12px;
   background:pink;
   cursor:pointer;
-  animation:slideUp 1.2s ease;
+  width:200px;
 }
-@keyframes slideUp {
-  from {opacity:0; transform:translateY(40px);}
+
+/* Card style */
+.card {
+  background:#fff;
+  border-radius:16px;
+  padding:30px;
+  margin:20px auto;
+  max-width:800px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  text-align:center;
+  animation:fadeIn 1.5s ease;
+}
+.card img {
+  width:90%;
+  max-width:400px;
+  border-radius:12px;
+  margin-top:20px;
+  box-shadow:0 0 15px rgba(255,200,100,0.6);
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
   to   {opacity:1; transform:translateY(0);}
 }
-
-.project-img {
-  width:90%;
-  max-width:350px;
-  margin:20px auto;
-  display:block;
-  border-radius:18px;
-  animation:fade 1.5s, pulseGlow 3s infinite;
-  box-shadow:0 0 18px rgba(255,120,180,0.7);
-  cursor:pointer;
-}
-@keyframes fade {
-  from{opacity:0; transform:scale(0.9)}
-  to{opacity:1; transform:scale(1)}
-}
-@keyframes pulseGlow {
-  0%   {box-shadow:0 0 18px rgba(255,120,180,0.7);}
-  50%  {box-shadow:0 0 28px rgba(255,120,180,1);}
-  100% {box-shadow:0 0 18px rgba(255,120,180,0.7);}
-}
-
-textarea {
-  width:85%;
-  height:100px;
-  font-size:16px;
-  border-radius:10px;
-  padding:10px;
-}
-
-/* Carousel */
-.carousel {
-  position:relative;
-  width:90%;
-  max-width:600px;
-  margin:0 auto;
-  overflow:hidden;
-  border-radius:18px;
-  box-shadow:0 0 18px rgba(255,120,180,0.7);
-}
-.carousel-track {
-  display:flex;
-  transition:transform 0.6s ease;
-}
-.carousel img {
-  width:100%;
-  flex-shrink:0;
-  border-radius:18px;
-}
-.carousel-btn {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(255,192,203,0.8);
-  border:none;
-  padding:10px;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:20px;
-}
-.carousel-btn.left { left:10px; }
-.carousel-btn.right { right:10px; }
 </style>
 </head>
 
@@ -142,74 +96,86 @@ textarea {
 <div id="menu" class="section show">
   <h1>WELCOME<br>TO MY PORTFOLIO</h1>
   <p>
-Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
-I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-I like working on:<br>
-Health and safety devices<br>
-Smart sensor systems<br>
-Learning technology<br>
-Problem-solving through innovation
+    Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
+    I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
+    I like working on:<br>
+    Health and safety devices<br>
+    Smart sensor systems<br>
+    Learning technology<br>
+    Problem-solving through innovation
   </p>
+  <button onclick="show('about')">About Me</button>
   <button onclick="show('projects')">Projects</button>
   <button onclick="show('skills')">Skills</button>
   <button onclick="show('contact')">Contact</button>
   <button onclick="adminLogin()">Admin</button>
 </div>
 
+<!-- ABOUT -->
+<div id="about" class="section hidden">
+  <div class="card">
+    <h2>👋 About Me</h2>
+    <p>
+      I’m Yuvraj Sahu, a high schooler passionate about creativity and building prototypes.<br><br>
+      I love learning new things — whether it’s sports, electronics, music, or challenges that push me to innovate.
+    </p>
+    <img src="images/Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" alt="About Me Poster">
+    <button onclick="back()">⬅ Back</button>
+  </div>
+</div>
+
 <!-- PROJECTS -->
 <div id="projects" class="section hidden">
-  <h2>My Projects</h2>
-  <div class="carousel">
-    <div class="carousel-track" id="carouselTrack">
-      <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
-      <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
-    </div>
-    <button class="carousel-btn left" onclick="moveSlide(-1)">⬅</button>
-    <button class="carousel-btn right" onclick="moveSlide(1)">➡</button>
+  <div class="card">
+    <h2>🚀 My Projects</h2>
+    <p>
+      Exploring tomorrow’s innovations today — from Arduino models to creative prototypes.
+    </p>
+    <img src="images/1_20260227_193115_0000.jpg" alt="Projects Poster">
+    <button onclick="back()">⬅ Back</button>
   </div>
-  <button onclick="back()">⬅ Back</button>
 </div>
 
 <!-- SKILLS -->
 <div id="skills" class="section hidden">
-  <h2>My Skills</h2>
-  <p>
-🔧 Technical Skills<br>
-Basic electronics, Arduino, sensors, hardware–software integration<br><br>
-💻 Software Skills<br>
-Simple web projects, GitHub, logical workflows<br><br>
-🎬 Creative Skills<br>
-Animation, motion design, visual ideas<br><br>
-🗣️ Communication Skills<br>
-Clear explanation, documentation, presentation<br><br>
-🌟 Core Strength<br>
-Tech + creativity + innovation<br>
-Continuous learner
-  </p>
-  <button onclick="back()">⬅ Back</button>
+  <div class="card">
+    <h2>🛠 My Skills</h2>
+    <p>
+      <strong>Technical & Engineering:</strong> Electronics, Arduino, sensor interfacing<br><br>
+      <strong>Software & Digital:</strong> HTML, CSS, JavaScript, GitHub<br><br>
+      <strong>Creative & Media:</strong> Animation, motion design, storytelling<br><br>
+      <strong>Core Strength:</strong> Tech + creativity + innovation
+    </p>
+    <img src="images/Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" alt="Skills Poster">
+    <button onclick="back()">⬅ Back</button>
+  </div>
 </div>
 
 <!-- CONTACT -->
 <div id="contact" class="section hidden">
-  <h2>Contact</h2>
-  <p>
-📧 Gmail: example@gmail.com<br>
-📸 Instagram: yuvraj.sahu369
-  </p>
-  <h3>Feedback</h3>
-  <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
-  <button onclick="save()">Submit Feedback</button>
-  <button onclick="back()">⬅ Back</button>
+  <div class="card">
+    <h2>📞 Contact</h2>
+    <p>
+      📧 Gmail: example@gmail.com<br>
+      📸 Instagram: yuvraj.sahu369
+    </p>
+    <h3>Feedback</h3>
+    <textarea id="fb" placeholder="Write feedback..." style="width:85%;height:100px;font-size:16px;border-radius:10px;padding:10px;"></textarea><br><br>
+    <button onclick="save()">Submit Feedback</button>
+    <button onclick="back()">⬅ Back</button>
+  </div>
 </div>
 
 <!-- ADMIN -->
 <div id="admin" class="section hidden">
-  <h2>🔒 Admin Panel</h2>
-  <p>Welcome, Admin! Here you can manage your portfolio.</p>
-  <h3>Feedback Viewer</h3>
-  <p id="feedbackDisplay">No feedback yet.</p>
-  <button onclick="clearFeedback()">🗑 Clear Feedback</button>
-  <button onclick="back()">⬅ Back</button>
+  <div class="card">
+    <h2>🔒 Admin Panel</h2>
+    <p>Welcome, Admin! Here you can manage your portfolio.</p>
+    <h3>Feedback Viewer</h3>
+    <p id="feedbackDisplay">No feedback yet.</p>
+    <button onclick="clearFeedback()">🗑 Clear Feedback</button>
+    <button onclick="back()">⬅ Back</button>
+  </div>
 </div>
 
 <script>
@@ -223,25 +189,6 @@ function show(id){
   setTimeout(()=>target.classList.add('show'),50);
 }
 function back(){ show('menu'); }
-
-function openFull(src){
-  let f=document.createElement("div");
-  f.style.position="fixed";
-  f.style.top=0; f.style.left=0;
-  f.style.width="100%"; f.style.height="100%";
-  f.style.background="rgba(0,0,0,0.9)";
-  f.style.display="flex";
-  f.style.alignItems="center";
-  f.style.justifyContent="center";
-  f.onclick=()=>f.remove();
-  let img=document.createElement("img");
-  img.src=src;
-  img.style.maxWidth="95%";
-  img.style.maxHeight="95%";
-  img.style.borderRadius="20px";
-  f.appendChild(img);
-  document.body.appendChild(f);
-}
 
 function save(){
   let fbText=document.getElementById("fb").value;
@@ -265,4 +212,10 @@ function adminLogin(){
 
 function clearFeedback(){
   localStorage.removeItem("feedback");
-  document.getElementById
+  document.getElementById("feedbackDisplay").innerText="No feedback yet.";
+  alert("Feedback cleared");
+}
+</script>
+
+</body>
+</html>
