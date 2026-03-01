@@ -19,35 +19,32 @@ body{
   100%{background-position:0% 50%}
 }
 
-.section{padding:50px;}
+.section{padding:40px;}
 .hidden{display:none;}
 
-h1{font-size:56px;}
-h2{font-size:40px;}
-p{
-  font-size:26px;
-  line-height:1.8;
-}
+h1{font-size:42px;}
+h2{font-size:32px;}
+p{font-size:20px; line-height:1.6;}
 
 button{
   display:block;
-  margin:16px auto;
-  padding:16px 40px;
-  font-size:22px;
+  margin:14px auto;
+  padding:14px 34px;
+  font-size:18px;
   border:none;
-  border-radius:14px;
+  border-radius:12px;
   background:pink;
   cursor:pointer;
 }
 
 .project-img{
   width:90%;
-  max-width:420px;
-  margin:30px auto;
+  max-width:350px;
+  margin:20px auto;
   display:block;
   border-radius:18px;
   animation:fade 1.5s;
-  box-shadow:0 0 20px rgba(255,120,180,0.7);
+  box-shadow:0 0 18px rgba(255,120,180,0.7);
   cursor:pointer;
 }
 
@@ -58,10 +55,10 @@ button{
 
 textarea{
   width:85%;
-  height:120px;
-  font-size:20px;
+  height:100px;
+  font-size:16px;
   border-radius:10px;
-  padding:12px;
+  padding:10px;
 }
 </style>
 </head>
@@ -91,12 +88,10 @@ Problem-solving through innovation
 <div id="projects" class="section hidden">
   <h2>My Projects</h2>
 
-  <!-- FIRST IMAGE -->
   <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg"
        class="project-img"
        onclick="openFull(this.src)">
 
-  <!-- SECOND IMAGE -->
   <img src="images/Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg"
        class="project-img"
        onclick="openFull(this.src)">
@@ -138,7 +133,7 @@ Continuous learner
 📸 Instagram: yuvraj.sahu369
   </p>
 
-  <h3 style="font-size:28px;">Feedback</h3>
+  <h3>Feedback</h3>
   <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
   <button onclick="save()">Submit Feedback</button>
   <button onclick="back()">⬅ Back</button>
