@@ -19,33 +19,44 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  padding:20px;
+  padding:10px;
   text-align:center;
 }
 
-/* bigger text */
-h1{font-size:2.5rem;}
-h2{font-size:2rem;}
-p{font-size:1.2rem; line-height:1.6;}
-
-/* mobile boost */
-@media(max-width:600px){
-  h1{font-size:3rem;}
-  h2{font-size:2.2rem;}
-  p{font-size:1.4rem;}
-  .btn{font-size:1.3rem;}
+/* image box */
+.imgBox{
+  position:relative;
+  width:95%;
+  margin:10px 0;
 }
-
-/* images */
-.section img{
-  max-width:95%;
+.imgBox img{
+  width:100%;
   border-radius:20px;
   box-shadow:0 0 20px rgba(0,0,0,0.25);
   cursor:pointer;
   animation:fadeZoom 1.5s ease;
-  margin-bottom:20px;
 }
 
+/* overlay title bar */
+.imgTitle{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.6);
+  color:white;
+  padding:12px 16px;
+  font-size:18px;
+  border-radius:0 0 20px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.arrowIcon{
+  font-size:20px;
+}
+
+/* animation */
 @keyframes fadeZoom{
   from{opacity:0; transform:scale(0.9);}
   to{opacity:1; transform:scale(1);}
@@ -54,11 +65,11 @@ p{font-size:1.2rem; line-height:1.6;}
 /* buttons */
 .btn{
   margin:10px;
-  padding:14px 28px;
+  padding:12px 25px;
   border:none;
   border-radius:20px;
   background:#ffb703;
-  font-size:18px;
+  font-size:16px;
   cursor:pointer;
 }
 .btn:hover{background:#ffd166;}
@@ -69,7 +80,7 @@ p{font-size:1.2rem; line-height:1.6;}
   color:white;
 }
 
-/* fullscreen image */
+/* fullscreen */
 #fullscreen{
   position:fixed;
   top:0; left:0;
@@ -86,51 +97,25 @@ p{font-size:1.2rem; line-height:1.6;}
   max-height:95%;
 }
 
-/* hidden pages */
+/* hidden project page */
 #projectsImages{
   display:none;
-}
-
-/* welcome popup */
-#welcome{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-}
-#welcomeBox{
-  background:white;
-  padding:30px;
-  border-radius:15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- WELCOME POPUP -->
-<div id="welcome">
-  <div id="welcomeBox">
-    <h2>Welcome 👋</h2>
-    <p>Thanks for visiting my portfolio</p>
-    <button class="btn" onclick="closeWelcome()">Enter</button>
-  </div>
-</div>
-
-<!-- FULLSCREEN VIEW -->
+<!-- FULLSCREEN -->
 <div id="fullscreen" onclick="closeFull()">
   <img id="fullImg">
 </div>
 
 <!-- PAGE 1 -->
 <div class="section" id="page1">
-  <h1>WELCOME</h1>
-  <h2>TO MY PORTFOLIO</h2>
+  <h1>INNOVATIONUBH</h1>
+  <h2>WELCOME TO MY PORTFOLIO</h2>
+
   <p>
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
@@ -140,17 +125,37 @@ Smart sensor systems<br>
 Learning technology<br>
 Problem-solving through innovation
   </p>
-  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
+
+  <div class="imgBox">
+    <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
+    <div class="imgTitle">
+      ABOUT ME <span class="arrowIcon">↗</span>
+    </div>
+  </div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
-  <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
+
+  <div class="imgBox">
+    <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
+    <div class="imgTitle">
+      ARDUINO PROJECTS <span class="arrowIcon">↗</span>
+    </div>
+  </div>
+
+  <div class="imgBox">
+    <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
+    <div class="imgTitle">
+      SKILLS <span class="arrowIcon">↗</span>
+    </div>
+  </div>
+
 </div>
 
-<!-- PROJECT IMAGES -->
+<!-- PROJECT IMAGES PAGE -->
 <div class="section" id="projectsImages">
+
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
   <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
@@ -158,6 +163,7 @@ Problem-solving through innovation
   <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
   <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
   <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
+
   <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
 
@@ -168,21 +174,15 @@ Problem-solving through innovation
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <input id="name" type="text" placeholder="Your Name"><br><br>
-  <textarea id="msg" rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn" onclick="saveFeedback()">Submit</button>
-
-  <div id="feedbackList"></div>
+  <input type="text" placeholder="Your Name"><br><br>
+  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
+  <button class="btn">Submit</button>
 
   <h2>Admin</h2>
-  <button class="btn" onclick="adminLogin()">Admin Login</button>
+  <button class="btn">Admin Login</button>
 </div>
 
 <script>
-function closeWelcome(){
-  document.getElementById("welcome").style.display="none";
-}
-
 function openFull(src){
   document.getElementById("fullscreen").style.display="flex";
   document.getElementById("fullImg").src=src;
@@ -195,53 +195,12 @@ function openProjectsImages(){
   document.getElementById("page2").style.display="none";
   document.getElementById("projectsImages").style.display="flex";
 }
+
 function backToPage2(){
   document.getElementById("projectsImages").style.display="none";
   document.getElementById("page2").style.display="flex";
 }
-
-/* feedback */
-function saveFeedback(){
-  let name=document.getElementById("name").value;
-  let msg=document.getElementById("msg").value;
-  let date=new Date().toLocaleDateString();
-  let all=JSON.parse(localStorage.getItem("fb")||"[]");
-  all.push({name,msg,date});
-  localStorage.setItem("fb",JSON.stringify(all));
-  showFeedback();
-}
-
-function showFeedback(){
-  let all=JSON.parse(localStorage.getItem("fb")||"[]");
-  let box=document.getElementById("feedbackList");
-  box.innerHTML="<h3>Feedback</h3>";
-  all.forEach(f=>{
-    box.innerHTML+=`<p><b>${f.name}</b> (${f.date})<br>${f.msg}</p>`;
-  });
-}
-
-function adminLogin(){
-  let pass=prompt("Enter admin password:");
-  if(pass==="admin123"){
-    let all=JSON.parse(localStorage.getItem("fb")||"[]");
-    let box=document.getElementById("feedbackList");
-    box.innerHTML="<h3>Admin Panel</h3>";
-    all.forEach((f,i)=>{
-      box.innerHTML+=`<p><b>${f.name}</b><br>${f.msg}<br>
-      <button onclick="deleteFeedback(${i})">Delete</button></p>`;
-    });
-  }
-}
-
-function deleteFeedback(i){
-  let all=JSON.parse(localStorage.getItem("fb")||"[]");
-  all.splice(i,1);
-  localStorage.setItem("fb",JSON.stringify(all));
-  adminLogin();
-}
-
-showFeedback();
 </script>
 
 </body>
-</html>
+    </html>
