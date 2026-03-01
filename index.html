@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>My Innovation Portfolio</title>
 
 <style>
-body {
+body{
   margin:0;
   font-family:Arial, sans-serif;
   background: linear-gradient(270deg,#eef2f3,#ffffff,#f9f9d2,#ffd6e0);
@@ -13,79 +13,49 @@ body {
   animation:bg 15s ease infinite;
   text-align:center;
 }
-@keyframes bg {
+@keyframes bg{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
+.section{padding:40px;}
+.hidden{display:none;}
 
-.section {
-  padding:40px;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity 0.8s ease, transform 0.8s ease;
-}
-.section.show {
-  opacity:1;
-  transform:translateY(0);
-}
-.hidden { display:none; }
+h1{font-size:48px;}
+h2{font-size:36px;}
+p{font-size:22px;line-height:1.7;}
 
-h1 {
-  font-size:56px;
-  font-weight:bold;
-  margin-bottom:20px;
-}
-h2 {
-  font-size:32px;
-  margin-bottom:15px;
-}
-p {
-  font-size:20px;
-  line-height:1.6;
-  max-width:900px;
-  margin:0 auto 20px auto;
-}
-
-button {
+button{
   display:block;
-  margin:12px auto;
-  padding:14px 34px;
-  font-size:18px;
+  margin:14px auto;
+  padding:14px 36px;
+  font-size:20px;
   border:none;
   border-radius:12px;
   background:pink;
   cursor:pointer;
-  width:200px;
 }
 
-/* Card style */
-.card {
-  background:#fff;
-  border-radius:16px;
-  padding:30px;
+img{
+  width:85%;
+  max-width:420px;
+  border-radius:18px;
   margin:20px auto;
-  max-width:800px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  text-align:center;
-  animation:fadeIn 1.5s ease;
-}
-.card img {
-  width:90%;
-  max-width:400px;
-  border-radius:12px;
-  margin-top:20px;
-  box-shadow:0 0 15px rgba(255,200,100,0.6);
+  display:block;
+  animation:fade 1.2s;
+  box-shadow:0 0 20px rgba(255,120,180,0.6);
+  cursor:pointer;
 }
 
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to   {opacity:1; transform:translateY(0);}
+@keyframes fade{
+  from{opacity:0;transform:scale(0.9)}
+  to{opacity:1;transform:scale(1)}
+}
+
+textarea{
+  width:80%;
+  height:100px;
+  font-size:18px;
 }
 </style>
 </head>
@@ -93,127 +63,72 @@ button {
 <body>
 
 <!-- HOME -->
-<div id="menu" class="section show">
+<div id="menu" class="section">
   <h1>WELCOME<br>TO MY PORTFOLIO</h1>
+
   <p>
-    Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
-    I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-    I like working on:<br>
-    Health and safety devices<br>
-    Smart sensor systems<br>
-    Learning technology<br>
-    Problem-solving through innovation
+Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
+I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
+I like working on:<br>
+Health and safety devices<br>
+Smart sensor systems<br>
+Learning technology<br>
+Problem-solving through innovation
   </p>
+
   <button onclick="show('about')">About Me</button>
   <button onclick="show('projects')">Projects</button>
   <button onclick="show('skills')">Skills</button>
   <button onclick="show('contact')">Contact</button>
-  <button onclick="adminLogin()">Admin</button>
 </div>
 
 <!-- ABOUT -->
 <div id="about" class="section hidden">
-  <div class="card">
-    <h2>👋 About Me</h2>
-    <p>
-      I’m Yuvraj Sahu, a high schooler passionate about creativity and building prototypes.<br><br>
-      I love learning new things — whether it’s sports, electronics, music, or challenges that push me to innovate.
-    </p>
-    <img src="images/Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" alt="About Me Poster">
-    <button onclick="back()">⬅ Back</button>
-  </div>
+  <h2>About Me</h2>
+  <img src="./images/Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
+  <p>
+This portfolio shows my journey, projects and skills as I move forward step by step.
+  </p>
+  <button onclick="back()">⬅ Back</button>
 </div>
 
 <!-- PROJECTS -->
 <div id="projects" class="section hidden">
-  <div class="card">
-    <h2>🚀 My Projects</h2>
-    <p>
-      Exploring tomorrow’s innovations today — from Arduino models to creative prototypes.
-    </p>
-    <img src="images/1_20260227_193115_0000.jpg" alt="Projects Poster">
-    <button onclick="back()">⬅ Back</button>
-  </div>
+  <h2>My Projects</h2>
+  <img src="./images/1_20260227_193115_0000.jpg">
+  <button onclick="back()">⬅ Back</button>
 </div>
 
 <!-- SKILLS -->
 <div id="skills" class="section hidden">
-  <div class="card">
-    <h2>🛠 My Skills</h2>
-    <p>
-      <strong>Technical & Engineering:</strong> Electronics, Arduino, sensor interfacing<br><br>
-      <strong>Software & Digital:</strong> HTML, CSS, JavaScript, GitHub<br><br>
-      <strong>Creative & Media:</strong> Animation, motion design, storytelling<br><br>
-      <strong>Core Strength:</strong> Tech + creativity + innovation
-    </p>
-    <img src="images/Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" alt="Skills Poster">
-    <button onclick="back()">⬅ Back</button>
-  </div>
+  <h2>My Skills</h2>
+  <img src="./images/Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
+  <p>
+Electronics • Arduino • Sensors • Innovation • Communication
+  </p>
+  <button onclick="back()">⬅ Back</button>
 </div>
 
 <!-- CONTACT -->
 <div id="contact" class="section hidden">
-  <div class="card">
-    <h2>📞 Contact</h2>
-    <p>
-      📧 Gmail: example@gmail.com<br>
-      📸 Instagram: yuvraj.sahu369
-    </p>
-    <h3>Feedback</h3>
-    <textarea id="fb" placeholder="Write feedback..." style="width:85%;height:100px;font-size:16px;border-radius:10px;padding:10px;"></textarea><br><br>
-    <button onclick="save()">Submit Feedback</button>
-    <button onclick="back()">⬅ Back</button>
-  </div>
-</div>
+  <h2>Contact</h2>
+  <p>📧 Gmail: example@gmail.com<br>📸 Instagram: yuvraj.sahu369</p>
 
-<!-- ADMIN -->
-<div id="admin" class="section hidden">
-  <div class="card">
-    <h2>🔒 Admin Panel</h2>
-    <p>Welcome, Admin! Here you can manage your portfolio.</p>
-    <h3>Feedback Viewer</h3>
-    <p id="feedbackDisplay">No feedback yet.</p>
-    <button onclick="clearFeedback()">🗑 Clear Feedback</button>
-    <button onclick="back()">⬅ Back</button>
-  </div>
+  <textarea id="fb" placeholder="Write feedback..."></textarea><br><br>
+  <button onclick="save()">Submit Feedback</button>
+  <button onclick="back()">⬅ Back</button>
 </div>
 
 <script>
 function show(id){
-  document.querySelectorAll('.section').forEach(s=>{
-    s.classList.remove('show');
-    s.classList.add('hidden');
-  });
-  let target=document.getElementById(id);
-  target.classList.remove('hidden');
-  setTimeout(()=>target.classList.add('show'),50);
+  document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
 }
 function back(){ show('menu'); }
 
 function save(){
-  let fbText=document.getElementById("fb").value;
-  if(fbText.trim()===""){alert("Please write feedback before submitting.");return;}
-  let timestamp=new Date().toLocaleString();
-  let feedbackEntry=fbText+" (submitted on "+timestamp+")";
-  localStorage.setItem("feedback",feedbackEntry);
+  localStorage.setItem("feedback",document.getElementById("fb").value);
   alert("Feedback saved");
-}
-
-function adminLogin(){
-  let pass=prompt("Enter admin password:");
-  if(pass==="innovationstartshere"){
-    show('admin');
-    let fb=localStorage.getItem("feedback");
-    document.getElementById("feedbackDisplay").innerText=fb?fb:"No feedback yet.";
-  } else {
-    alert("Wrong password");
-  }
-}
-
-function clearFeedback(){
-  localStorage.removeItem("feedback");
-  document.getElementById("feedbackDisplay").innerText="No feedback yet.";
-  alert("Feedback cleared");
 }
 </script>
 
