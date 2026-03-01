@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -13,6 +13,7 @@ body{
   scroll-behavior:smooth;
 }
 
+/* sections */
 .section{
   min-height:100vh;
   padding:60px 20px;
@@ -23,43 +24,31 @@ body{
   text-align:center;
 }
 
-h1{font-size:42px;}
-h2{font-size:26px;}
-p{font-size:20px; max-width:800px; line-height:1.6;}
+/* headings */
+h1{
+  font-size:42px;
+  letter-spacing:3px;
+}
+h2{
+  font-size:28px;
+  margin-top:10px;
+}
+p{
+  font-size:20px;
+  max-width:800px;
+  line-height:1.6;
+}
 
-/* image container */
-.img-box{
-  position:relative;
+/* images */
+img{
   max-width:90%;
+  border-radius:16px;
   margin:25px 0;
+  box-shadow:0 0 20px rgba(0,0,0,0.15);
   cursor:pointer;
 }
-.img-box img{
-  width:100%;
-  border-radius:16px;
-  box-shadow:0 0 20px rgba(0,0,0,0.15);
-}
 
-/* overlay bar */
-.overlay{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.6);
-  color:white;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-radius:0 0 16px 16px;
-  font-size:18px;
-}
-.arrow{
-  font-size:22px;
-}
-
-/* button */
+/* buttons */
 .btn{
   padding:12px 25px;
   border:none;
@@ -85,8 +74,8 @@ p{font-size:20px; max-width:800px; line-height:1.6;}
   max-height:95%;
 }
 
-/* hidden pages */
-#projectsPage, #adminPage{display:none;}
+/* projects page */
+#projectsPage{display:none;}
 </style>
 </head>
 
@@ -97,7 +86,7 @@ p{font-size:20px; max-width:800px; line-height:1.6;}
   <img id="fullImg">
 </div>
 
-<!-- PAGE 1 -->
+<!-- HERO -->
 <div class="section">
   <h1>INNOVATIONUBH</h1>
   <h2>WELCOME TO MY PORTFOLIO</h2>
@@ -112,41 +101,18 @@ Learning technology<br>
 Problem solving through innovation
   </p>
 
-  <!-- 1st IMAGE WITH OVERLAY -->
-  <div class="img-box" onclick="openFull('Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg')">
-    <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
-    <div class="overlay">
-      <span>ABOUT ME</span>
-      <span class="arrow">➜</span>
-    </div>
-  </div>
+  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- PAGE 2 -->
+<!-- ABOUT / PROJECTS -->
 <div class="section" id="page2">
-
-  <!-- 2nd IMAGE WITH OVERLAY -->
-  <div class="img-box" onclick="openProjects()">
-    <img src="1_20260227_193115_0000.jpg">
-    <div class="overlay">
-      <span>ARDUINO PROJECTS</span>
-      <span class="arrow">➜</span>
-    </div>
-  </div>
-
-  <!-- 3rd IMAGE WITH OVERLAY -->
-  <div class="img-box" onclick="openFull('Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg')">
-    <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
-    <div class="overlay">
-      <span>SKILLS</span>
-      <span class="arrow">➜</span>
-    </div>
-  </div>
-
+  <img src="1_20260227_193115_0000.jpg" onclick="openProjects()">
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- PROJECTS PAGE -->
+<!-- PROJECT IMAGES -->
 <div class="section" id="projectsPage">
+
   <h1>MY PROJECTS</h1>
 
   <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
@@ -160,24 +126,16 @@ Problem solving through innovation
   <button class="btn" onclick="back()">⬅ Back</button>
 </div>
 
-<!-- ADMIN PANEL -->
-<div class="section" id="adminPage">
-  <h1>ADMIN PANEL</h1>
-
-  <input type="text" placeholder="Username"><br><br>
-  <input type="password" placeholder="Password"><br><br>
-  <button class="btn">Login</button><br><br>
-
-  <button class="btn" onclick="back()">⬅ Back</button>
-</div>
-
 <!-- CONTACT -->
 <div class="section">
   <h1>CONTACT</h1>
   <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
-  <button class="btn" onclick="openAdmin()">Admin Panel</button>
+  <h2>Feedback</h2>
+  <input type="text" placeholder="Your Name"><br><br>
+  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
+  <button class="btn">Submit</button>
 </div>
 
 <script>
@@ -192,14 +150,8 @@ function openProjects(){
   document.getElementById("page2").style.display="none";
   document.getElementById("projectsPage").style.display="flex";
 }
-function openAdmin(){
-  document.getElementById("projectsPage").style.display="none";
-  document.getElementById("page2").style.display="none";
-  document.getElementById("adminPage").style.display="flex";
-}
 function back(){
   document.getElementById("projectsPage").style.display="none";
-  document.getElementById("adminPage").style.display="none";
   document.getElementById("page2").style.display="flex";
 }
 </script>
