@@ -2,179 +2,209 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Innovationubh</title>
+<title>INNOVATIONUBH</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-body{
+*{
   margin:0;
-  font-family:Arial, sans-serif;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
   scroll-behavior:smooth;
-  background:white;
 }
 
-/* sections */
-.section{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  padding:20px;
-  text-align:center;
+body{
+  background:#ffffff;
+  color:#000;
 }
 
-/* images */
-.section img{
-  max-width:95%;
-  border-radius:20px;
-  box-shadow:0 0 20px rgba(0,0,0,0.25);
-  cursor:pointer;
-  animation:fadeZoom 1.2s ease;
-  margin-bottom:10px;
-}
-
-@keyframes fadeZoom{
-  from{opacity:0; transform:scale(0.9);}
-  to{opacity:1; transform:scale(1);}
-}
-
-/* overlay bar */
-.overlay{
-  width:95%;
-  background:rgba(0,0,0,0.6);
-  color:white;
-  padding:15px;
-  border-radius:12px;
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:20px 50px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-top:-60px;
-  margin-bottom:20px;
+  background:white;
+  z-index:1000;
 }
 
-.arrow{
-  font-size:22px;
+nav a{
+  text-decoration:none;
+  color:black;
+  margin-left:25px;
+  font-weight:500;
 }
 
-/* contact page */
-#contact{
-  background:black;
-  color:white;
+/* SECTIONS */
+section{
+  min-height:100vh;
+  padding:120px 10%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-/* fullscreen */
+/* HERO */
+#home h1{
+  font-size:70px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+#home h2{
+  font-size:32px;
+  font-weight:400;
+  margin-top:10px;
+}
+
+/* TEXT */
+p{
+  font-size:20px;
+  line-height:1.8;
+  max-width:900px;
+}
+
+/* IMAGES */
+.project img{
+  width:100%;
+  border-radius:20px;
+  margin-top:40px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  cursor:pointer;
+}
+
+/* FULLSCREEN */
 #fullscreen{
   position:fixed;
-  top:0; left:0;
+  top:0;left:0;
   width:100%;
   height:100%;
   background:black;
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:1000;
-}
-#fullscreen img{
-  max-width:95%;
-  max-height:95%;
+  z-index:2000;
 }
 
-/* hidden */
-#projectsImages{
-  display:none;
+#fullscreen img{
+  max-width:90%;
+  max-height:90%;
+}
+
+/* SKILLS */
+ul{
+  font-size:22px;
+  line-height:2;
+  margin-top:20px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  font-size:16px;
+  background:#f5f5f5;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  #home h1{font-size:45px;}
+  #home h2{font-size:22px;}
+  p{font-size:18px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- FULLSCREEN -->
+<nav>
+  <b>INNOVATIONUBH</b>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
 <div id="fullscreen" onclick="closeFull()">
   <img id="fullImg">
 </div>
 
-<!-- PAGE 1 -->
-<div class="section" id="page1">
+<section id="home">
   <h1>INNOVATIONUBH</h1>
-  <h2>WELCOME TO MY PORTFOLIO</h2>
+  <h2>Welcome to My Portfolio</h2>
+</section>
 
+<section id="about">
+  <h1>About Me</h1>
   <p>
-Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
-I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
-I like working on:<br>
-Health and safety devices<br>
-Smart sensor systems<br>
-Learning technology<br>
+Hi, I am Yuvraj Sahu, a science student passionate about machines, electronics and future technology.  
+I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.
+
+I enjoy working on:
+Health and safety devices  
+Smart sensor systems  
+Arduino-based projects  
 Problem-solving through innovation
   </p>
+</section>
 
-  <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
-</div>
+<section id="projects">
+  <h1>Arduino Projects</h1>
 
-<!-- PAGE 2 -->
-<div class="section" id="page2">
-  <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
-
-  <div class="overlay">
-    <span>ARDUINO PROJECTS</span>
-    <span class="arrow">➜</span>
+  <div class="project">
+    <p>Pulse Sentinel – health monitoring device</p>
+    <img src="1.jpg" onclick="openFull(this.src)">
   </div>
 
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
-
-  <div class="overlay">
-    <span>SKILLS</span>
-    <span class="arrow">➜</span>
+  <div class="project">
+    <p>Drowsiness Detection System</p>
+    <img src="2.jpg" onclick="openFull(this.src)">
   </div>
-</div>
 
-<!-- PROJECT IMAGES PAGE -->
-<div class="section" id="projectsImages">
+  <div class="project">
+    <p>Smart Safety Alert Device</p>
+    <img src="3.jpg" onclick="openFull(this.src)">
+  </div>
+</section>
 
-  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
-  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
-  <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
-  <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
-  <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
-  <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
-  <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
+<section id="skills">
+  <h1>Skills</h1>
+  <ul>
+    <li>Arduino Programming</li>
+    <li>Basic Electronics</li>
+    <li>Sensor Integration</li>
+    <li>Problem Solving</li>
+    <li>HTML & CSS</li>
+  </ul>
+</section>
 
-  <button onclick="backToPage2()">⬅ Back</button>
-</div>
+<section id="contact">
+  <h1>Contact</h1>
+  <p>Email: yuvrajsahu369@gmail.com</p>
+  <p>Instagram: @yuvraj.sahu369</p>
+</section>
 
-<!-- PAGE 3 -->
-<div class="section" id="contact">
-  <h1>Contact & Feedback</h1>
-  <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
-  <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
-
-  <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name"><br><br>
-  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button>Submit</button>
-
-  <h2>Admin</h2>
-  <button>Admin Login</button>
-</div>
+<footer>
+© 2026 INNOVATIONUBH – Yuvraj Sahu
+</footer>
 
 <script>
 function openFull(src){
   document.getElementById("fullscreen").style.display="flex";
   document.getElementById("fullImg").src=src;
 }
-
 function closeFull(){
   document.getElementById("fullscreen").style.display="none";
-}
-
-function openProjectsImages(){
-  document.getElementById("page2").style.display="none";
-  document.getElementById("projectsImages").style.display="flex";
-}
-
-function backToPage2(){
-  document.getElementById("projectsImages").style.display="none";
-  document.getElementById("page2").style.display="flex";
 }
 </script>
 
