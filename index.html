@@ -23,7 +23,7 @@ body{
   text-align:center;
 }
 
-/* text size upgrade */
+/* text size */
 h1{font-size:2.5rem;}
 h2{font-size:2rem;}
 p{font-size:1.2rem; line-height:1.6;}
@@ -37,15 +37,6 @@ button{font-size:1.1rem;}
   cursor:pointer;
   animation:fadeZoom 1.5s ease;
   margin-bottom:20px;
-}
-
-/* image numbering */
-.project-img::before{
-  content:attr(data-num);
-  display:block;
-  font-size:1.2rem;
-  margin-bottom:5px;
-  font-weight:bold;
 }
 
 @keyframes fadeZoom{
@@ -160,34 +151,13 @@ Problem-solving through innovation
 
 <!-- PROJECT IMAGES PAGE -->
 <div class="section" id="projectsImages">
-
-  <div class="project-img" data-num="Project 1">
-    <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
-  </div>
-
-  <div class="project-img" data-num="Project 2">
-    <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
-  </div>
-
-  <div class="project-img" data-num="Project 3">
-    <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
-  </div>
-
-  <div class="project-img" data-num="Project 4">
-    <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
-  </div>
-
-  <div class="project-img" data-num="Project 5">
-    <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
-  </div>
-
-  <div class="project-img" data-num="Project 6">
-    <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
-  </div>
-
-  <div class="project-img" data-num="Project 7">
-    <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
-  </div>
+  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
+  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
+  <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
+  <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
+  <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
+  <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
+  <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
 
   <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
