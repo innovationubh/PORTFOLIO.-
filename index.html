@@ -12,6 +12,7 @@ body{
   background:white;
 }
 
+/* sections */
 .section{
   min-height:100vh;
   display:flex;
@@ -22,12 +23,14 @@ body{
   text-align:center;
 }
 
+/* images */
 .section img{
   max-width:95%;
   border-radius:20px;
   box-shadow:0 0 20px rgba(0,0,0,0.25);
   cursor:pointer;
-  animation:fadeZoom 1.2s ease;
+  animation:fadeZoom 1.5s ease;
+  margin-bottom:20px;
 }
 
 @keyframes fadeZoom{
@@ -35,22 +38,25 @@ body{
   to{opacity:1; transform:scale(1);}
 }
 
+/* buttons */
 .btn{
   margin:10px;
-  padding:14px 30px;
+  padding:12px 25px;
   border:none;
-  border-radius:25px;
+  border-radius:20px;
   background:#ffb703;
-  font-size:18px;
+  font-size:16px;
   cursor:pointer;
 }
 .btn:hover{background:#ffd166;}
 
+/* contact page */
 #contact{
   background:black;
   color:white;
 }
 
+/* fullscreen image */
 #fullscreen{
   position:fixed;
   top:0; left:0;
@@ -67,23 +73,25 @@ body{
   max-height:95%;
 }
 
-/* project carousel */
-#projectsImages{display:none;}
+/* hidden pages */
+#projectsImages{
+  display:none;
+}
 </style>
 </head>
 
 <body>
 
-<!-- FULLSCREEN -->
+<!-- FULLSCREEN VIEW -->
 <div id="fullscreen" onclick="closeFull()">
   <img id="fullImg">
 </div>
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 (WELCOME) -->
 <div class="section" id="page1">
-  <h1 style="font-size:42px;">WELCOME</h1>
-  <h2 style="font-size:32px;">TO MY PORTFOLIO</h2>
-  <p style="font-size:20px;">
+  <h1>WELCOME</h1>
+  <h2>TO MY PORTFOLIO</h2>
+  <p>
 Hi 👋, I am a science student interested in machines, electronics, and future technology.<br><br>
 I study PCB (Physics, Chemistry, Biology) and also learn engineering by myself.<br><br>
 I like working on:<br>
@@ -92,6 +100,7 @@ Smart sensor systems<br>
 Learning technology<br>
 Problem-solving through innovation
   </p>
+  <br>
   <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg" onclick="openFull(this.src)">
 </div>
 
@@ -102,16 +111,17 @@ Problem-solving through innovation
   <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
 </div>
 
-<!-- PROJECT IMAGES (NORMAL CAROUSEL) -->
+<!-- PROJECT IMAGES PAGE -->
 <div class="section" id="projectsImages">
-  <button class="btn" onclick="prevImg()">⬅ Prev</button>
 
-  <img id="carouselImg"
-       src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg"
-       onclick="openFull(this.src)">
+  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg" onclick="openFull(this.src)">
+  <img src="Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg" onclick="openFull(this.src)">
+  <img src="1_20260301_141749_0000.jpg" onclick="openFull(this.src)">
+  <img src="2_20260301_141749_0001.jpg" onclick="openFull(this.src)">
+  <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
+  <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
+  <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
 
-  <button class="btn" onclick="nextImg()">Next ➡</button>
-  <br>
   <button class="btn" onclick="backToPage2()">⬅ Back</button>
 </div>
 
@@ -122,72 +132,34 @@ Problem-solving through innovation
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
   <h2>Feedback</h2>
-  <input id="fname" placeholder="Your Name"><br><br>
-  <textarea id="ftext" rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn" onclick="saveFeedback()">Submit</button>
+  <input type="text" placeholder="Your Name"><br><br>
+  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
+  <button class="btn">Submit</button>
 
   <h2>Admin</h2>
-  <button class="btn" onclick="adminLogin()">Admin Login</button>
-
-  <pre id="adminPanel" style="display:none;"></pre>
+  <button class="btn">Admin Login</button>
 </div>
 
 <script>
+/* fullscreen */
 function openFull(src){
-  fullscreen.style.display="flex";
-  fullImg.src=src;
+  document.getElementById("fullscreen").style.display="flex";
+  document.getElementById("fullImg").src=src;
 }
 function closeFull(){
-  fullscreen.style.display="none";
+  document.getElementById("fullscreen").style.display="none";
 }
 
-let imgs=[
-"Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0000.jpg",
-"Blue Illustrative Innovation in Medicine Presentation_20260228_221716_0001.jpg",
-"1_20260301_141749_0000.jpg",
-"2_20260301_141749_0001.jpg",
-"3_20260301_141749_0002.jpg",
-"1_20260301_145414_0000.jpg",
-"2_20260301_145414_0001.jpg"
-];
-
-let i=0;
-
+/* open project images */
 function openProjectsImages(){
-  page2.style.display="none";
-  projectsImages.style.display="flex";
-  carouselImg.src=imgs[i];
+  document.getElementById("page2").style.display="none";
+  document.getElementById("projectsImages").style.display="flex";
 }
 
-function nextImg(){
-  i=(i+1)%imgs.length;
-  carouselImg.src=imgs[i];
-}
-
-function prevImg(){
-  i=(i-1+imgs.length)%imgs.length;
-  carouselImg.src=imgs[i];
-}
-
+/* back */
 function backToPage2(){
-  projectsImages.style.display="none";
-  page2.style.display="flex";
-}
-
-function saveFeedback(){
-  let old=localStorage.getItem("feedback")||"";
-  localStorage.setItem("feedback",old+"\n"+fname.value+": "+ftext.value);
-  alert("Saved!");
-  fname.value="";
-  ftext.value="";
-}
-
-function adminLogin(){
-  let pass=prompt("Password:");
-  if(pass==="innovationstartshere"){
-    adminPanel.style.display="block";
-    adminPanel.textContent=localStorage.getItem("feedback")||"No feedback yet.";
-  }
+  document.getElementById("projectsImages").style.display="none";
+  document.getElementById("page2").style.display="flex";
 }
 </script>
 
