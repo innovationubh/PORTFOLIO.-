@@ -25,41 +25,41 @@ body{
 }
 
 /* headings */
-h1{font-size:42px;letter-spacing:3px;}
-h2{font-size:28px;margin-top:10px;}
-p{font-size:20px;max-width:800px;line-height:1.6;}
+h1{font-size:42px; letter-spacing:3px;}
+h2{font-size:28px;}
+p{font-size:20px; max-width:800px; line-height:1.6;}
 
-/* image card */
-.image-card{
+/* image container */
+.img-box{
   position:relative;
   max-width:90%;
   margin:25px 0;
   cursor:pointer;
 }
-.image-card img{
+.img-box img{
   width:100%;
+  max-height:80vh;
+  object-fit:contain;
   border-radius:16px;
   box-shadow:0 0 20px rgba(0,0,0,0.15);
 }
 
-/* bottom overlay strip */
+/* overlay strip */
 .overlay{
   position:absolute;
   bottom:0;
   left:0;
   right:0;
-  background:rgba(255,255,255,0.95);
-  padding:14px 18px;
+  background:rgba(0,0,0,0.6);
+  color:white;
+  padding:14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   border-radius:0 0 16px 16px;
   font-size:18px;
-  font-weight:bold;
 }
-.arrow{
-  font-size:22px;
-}
+.arrow{font-size:22px;}
 
 /* buttons */
 .btn{
@@ -87,18 +87,8 @@ p{font-size:20px;max-width:800px;line-height:1.6;}
   max-height:95%;
 }
 
-/* projects page */
-#projectsPage{display:none;}
-
-/* admin panel */
-#adminPanel{
-  background:#f5f5f5;
-}
-#adminPanel input{
-  padding:10px;
-  font-size:16px;
-  width:250px;
-}
+/* hidden pages */
+#projectsPage, #adminPage{display:none;}
 </style>
 </head>
 
@@ -109,9 +99,9 @@ p{font-size:20px;max-width:800px;line-height:1.6;}
   <img id="fullImg">
 </div>
 
-<!-- HERO -->
+<!-- PAGE 1 -->
 <div class="section">
-  <h1 id="mainTitle">INNOVATIONUBH</h1>
+  <h1>INNOVATIONUBH</h1>
   <h2>WELCOME TO MY PORTFOLIO</h2>
 
   <p>
@@ -124,7 +114,7 @@ Learning technology<br>
 Problem solving through innovation
   </p>
 
-  <div class="image-card" onclick="openFull('Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg')">
+  <div class="img-box" onclick="openFull('Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg')">
     <img src="Colorful Modern Personal Profile All About Me Poster_20260227_191237_0000.jpg">
     <div class="overlay">
       <span>ABOUT ME</span>
@@ -136,7 +126,7 @@ Problem solving through innovation
 <!-- PAGE 2 -->
 <div class="section" id="page2">
 
-  <div class="image-card" onclick="openProjects()">
+  <div class="img-box" onclick="openProjects()">
     <img src="1_20260227_193115_0000.jpg">
     <div class="overlay">
       <span>ARDUINO PROJECTS</span>
@@ -144,7 +134,7 @@ Problem solving through innovation
     </div>
   </div>
 
-  <div class="image-card" onclick="openFull('Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg')">
+  <div class="img-box" onclick="openFull('Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg')">
     <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg">
     <div class="overlay">
       <span>SKILLS</span>
@@ -154,7 +144,7 @@ Problem solving through innovation
 
 </div>
 
-<!-- PROJECT IMAGES -->
+<!-- PROJECTS PAGE -->
 <div class="section" id="projectsPage">
   <h1>MY PROJECTS</h1>
 
@@ -169,23 +159,22 @@ Problem solving through innovation
   <button class="btn" onclick="back()">⬅ Back</button>
 </div>
 
+<!-- ADMIN PANEL -->
+<div class="section" id="adminPage">
+  <h1>ADMIN PANEL</h1>
+  <input type="text" placeholder="Username"><br><br>
+  <input type="password" placeholder="Password"><br><br>
+  <button class="btn">Login</button><br><br>
+  <button class="btn" onclick="back()">⬅ Back</button>
+</div>
+
 <!-- CONTACT -->
 <div class="section">
   <h1>CONTACT</h1>
   <p>📧 Gmail: <b>yuvrajsahu369@gmail.com</b></p>
   <p>📷 Instagram: <b>@yuvraj.sahu369</b></p>
 
-  <h2>Feedback</h2>
-  <input type="text" placeholder="Your Name"><br><br>
-  <textarea rows="4" placeholder="Your Feedback"></textarea><br><br>
-  <button class="btn">Submit</button>
-</div>
-
-<!-- ADMIN PANEL -->
-<div class="section" id="adminPanel">
-  <h1>ADMIN PANEL</h1>
-  <input type="text" id="titleInput" placeholder="Change main title"><br><br>
-  <button class="btn" onclick="updateTitle()">Update Title</button>
+  <button class="btn" onclick="openAdmin()">Admin Panel</button>
 </div>
 
 <script>
@@ -200,13 +189,15 @@ function openProjects(){
   document.getElementById("page2").style.display="none";
   document.getElementById("projectsPage").style.display="flex";
 }
+function openAdmin(){
+  document.getElementById("page2").style.display="none";
+  document.getElementById("projectsPage").style.display="none";
+  document.getElementById("adminPage").style.display="flex";
+}
 function back(){
   document.getElementById("projectsPage").style.display="none";
+  document.getElementById("adminPage").style.display="none";
   document.getElementById("page2").style.display="flex";
-}
-function updateTitle(){
-  let text=document.getElementById("titleInput").value;
-  document.getElementById("mainTitle").innerText=text;
 }
 </script>
 
