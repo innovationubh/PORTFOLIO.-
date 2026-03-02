@@ -1,10 +1,9 @@
 
-  <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Device Pre-Book</title>
-
 <style>
 body {
   margin: 0;
@@ -49,73 +48,29 @@ img {
 .btn:hover { background: #ffd166; }
 
 /* Input fields */
-input {
-  padding: 10px;
-  font-size: 16px;
-  margin: 5px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
+input { padding: 10px; font-size: 16px; margin: 5px; border-radius: 8px; border: 1px solid #ccc; }
 
-/* Confetti */
-canvas {
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-}
+/* Confetti/Balloons */
+canvas { position: fixed; pointer-events: none; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; }
 
-/* Pages */
-#adminPage, #galleryPage { display: none; }
+/* Admin page */
+#adminPage { display: none; }
 </style>
 </head>
 <body>
 
-<!-- MAIN PAGE -->
-<div class="section" id="mainPage">
+<div class="section">
   <h1>INNOVATIONUBH</h1>
   <h2>Pre-Book Your Device</h2>
-  <p>
-    Collecting early interest helps us improve our devices.
-    This project is for learning business and innovation.
-  </p>
+  <p>Collecting early interest helps us improve our devices! Fill your details and tap Pre-Book.</p>
 
   <input type="text" id="name" placeholder="Your Name">
   <input type="email" id="email" placeholder="Your Email">
   <br>
   <button class="btn" onclick="preBook()">Pre-Book</button>
-
-  <p id="popupMsg" style="font-weight:bold;color:green;"></p>
-
-  <!-- PROJECT IMAGE -->
-  <img src="1_20260302_204920_0000.jpg" onclick="openGallery()">
+  <p id="popupMsg" style="font-weight:bold;color:green;margin-top:10px;"></p>
 
   <button class="btn" onclick="openAdmin()">Admin Panel</button>
-</div>
-
-<!-- GALLERY PAGE -->
-<div class="section" id="galleryPage">
-  <h1>Smart Assist Device</h1>
-  <p>
-    This device is an experimental learning project focused on building
-    useful technology for daily life. It is designed to explore how simple
-    electronics and intelligent systems can help in safety, awareness,
-    and assistance.
-    <br><br>
-    This prototype is created for learning, testing ideas, and improving
-    through early interest and feedback.
-  </p>
-
-  <img src="2_20260302_204920_0001.jpg">
-  <img src="IMG_20251122_200050.jpg">
-  <img src="IMG-20251009-WA0002.jpg">
-  <img src="IMG-20251009-WA0001.jpg">
-  <img src="IMG-20251009-WA0000.jpg">
-
-  <button class="btn" onclick="backFromGallery()">⬅ Back</button>
 </div>
 
 <!-- ADMIN PAGE -->
@@ -123,29 +78,27 @@ canvas {
   <h1>Admin Panel</h1>
   <input type="password" id="adminPass" placeholder="Enter password">
   <button class="btn" onclick="checkAdmin()">Login</button>
-
   <div id="adminData" style="margin-top:20px;"></div>
-
   <button class="btn" onclick="closeAdmin()">⬅ Back</button>
 </div>
 
 <canvas id="confetti"></canvas>
 
 <script>
+// Visitor & Pre-book Tracking
 let visitors = 0;
 let preBooks = 0;
 let preBookers = [];
 
-// Load saved data
+// Load from localStorage
 if(localStorage.getItem("visitors")) visitors = parseInt(localStorage.getItem("visitors"));
 if(localStorage.getItem("preBooks")) preBooks = parseInt(localStorage.getItem("preBooks"));
 if(localStorage.getItem("preBookers")) preBookers = JSON.parse(localStorage.getItem("preBookers"));
 
-// Pre-book
+// Pre-Book Function
 function preBook() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
-
   if(!name || !email) {
     alert("Please enter both name and email.");
     return;
@@ -154,60 +107,33 @@ function preBook() {
   visitors++;
   preBooks++;
   preBookers.push({name, email, date: new Date().toLocaleString()});
-
   localStorage.setItem("visitors", visitors);
   localStorage.setItem("preBooks", preBooks);
   localStorage.setItem("preBookers", JSON.stringify(preBookers));
 
   document.getElementById("popupMsg").innerText = "We will notify you! 🎉";
   launchConfetti();
-
   document.getElementById("name").value = "";
   document.getElementById("email").value = "";
 }
 
-// Admin
-function openAdmin(){
-  document.getElementById("mainPage").style.display="none";
-  document.getElementById("adminPage").style.display="flex";
-}
-
-function closeAdmin(){
-  document.getElementById("adminPage").style.display="none";
-  document.getElementById("mainPage").style.display="flex";
-}
-
-function checkAdmin(){
+// Admin Functions
+function openAdmin() { document.getElementById("adminPage").style.display = "flex"; }
+function closeAdmin() { document.getElementById("adminPage").style.display = "none"; }
+function checkAdmin() {
   const pass = document.getElementById("adminPass").value;
-
-  if(pass === "firststartup"){
+  if(pass === "firststartup") {
     let html = `<p>Total Visitors: ${visitors}</p>`;
     html += `<p>Total Pre-Books: ${preBooks}</p>`;
     html += "<h3>Pre-Booker Details:</h3><ul>";
-    preBookers.forEach(pb=>{
-      html += `<li>${pb.date} - ${pb.name} (${pb.email})</li>`;
-    });
+    preBookers.forEach(pb => html += `<li>${pb.date} - ${pb.name} (${pb.email})</li>`);
     html += "</ul>";
-
     document.getElementById("adminData").innerHTML = html;
-  } else {
-    alert("Incorrect password");
-  }
+  } else { alert("Incorrect password"); }
 }
 
-// Gallery
-function openGallery(){
-  document.getElementById("mainPage").style.display="none";
-  document.getElementById("galleryPage").style.display="flex";
-}
-
-function backFromGallery(){
-  document.getElementById("galleryPage").style.display="none";
-  document.getElementById("mainPage").style.display="flex";
-}
-
-// Confetti
-function launchConfetti(){
+// Confetti/Balloons Animation
+function launchConfetti() {
   const canvas = document.getElementById("confetti");
   const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
@@ -216,14 +142,14 @@ function launchConfetti(){
   const particles = [];
   const colors = ["#ff4b5c","#ffb703","#ffdf00","#00b4d8","#8ac926"];
 
-  for(let i=0;i<120;i++){
+  for(let i=0;i<100;i++){
     particles.push({
       x: Math.random()*canvas.width,
       y: Math.random()*canvas.height - canvas.height,
-      r: Math.random()*6+4,
-      c: colors[Math.floor(Math.random()*colors.length)],
-      sy: Math.random()*4+2,
-      sx: Math.random()*2-1
+      radius: Math.random()*6+4,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      speedY: Math.random()*4+2,
+      speedX: Math.random()*2-1
     });
   }
 
@@ -232,18 +158,17 @@ function launchConfetti(){
     frame++;
     ctx.clearRect(0,0,canvas.width,canvas.height);
     particles.forEach(p=>{
-      p.y += p.sy;
-      p.x += p.sx;
+      p.y += p.speedY;
+      p.x += p.speedX;
       ctx.beginPath();
-      ctx.fillStyle = p.c;
-      ctx.arc(p.x,p.y,p.r,0,2*Math.PI);
+      ctx.fillStyle = p.color;
+      ctx.arc(p.x,p.y,p.radius,0,2*Math.PI);
       ctx.fill();
     });
-    if(frame<100) requestAnimationFrame(animate);
+    if(frame<100){ requestAnimationFrame(animate); }
   }
   animate();
 }
 </script>
-
 </body>
 </html>
