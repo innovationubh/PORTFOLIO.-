@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +14,7 @@
 body{
   font-family:Arial, sans-serif;
   scroll-behavior:smooth;
-  background:#ffffff; /* PURE WHITE */
+  background:#ffffff;
 }
 
 /* sections */
@@ -111,7 +110,7 @@ p{
 }
 
 /* hidden */
-#projectsImages{
+#projectsImages, #sketchesImages{
   display:none;
 }
 
@@ -168,15 +167,22 @@ Problem-solving through innovation
 <!-- PAGE 2 -->
 <div class="section" id="page2">
 
+  <!-- PROJECTS -->
   <img src="1_20260227_193115_0000.jpg" onclick="openProjectsImages()">
-
   <div class="overlay">
     <span>ARDUINO PROJECTS</span>
     <span class="arrow">➜</span>
   </div>
 
-  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
+  <!-- SKETCHES -->
+  <img src="1_20260302_204920_0000.jpg" onclick="openSketchesImages()">
+  <div class="overlay">
+    <span>SKETCHES</span>
+    <span class="arrow">➜</span>
+  </div>
 
+  <!-- SKILLS IMAGE -->
+  <img src="Brown Minimalist Monotone Communication Skills Instagram Post_20260227_194843_0000.jpg" onclick="openFull(this.src)">
   <div class="overlay">
     <span>SKILLS</span>
     <span class="arrow">➜</span>
@@ -194,6 +200,19 @@ Problem-solving through innovation
   <img src="3_20260301_141749_0002.jpg" onclick="openFull(this.src)">
   <img src="1_20260301_145414_0000.jpg" onclick="openFull(this.src)">
   <img src="2_20260301_145414_0001.jpg" onclick="openFull(this.src)">
+
+  <br>
+  <button onclick="backToPage2()">⬅ Back</button>
+</div>
+
+<!-- SKETCHES IMAGES PAGE -->
+<div class="section" id="sketchesImages">
+
+  <img src="2_20260302_204920_0001.jpg" onclick="openFull(this.src)">
+  <img src="IMG_20251122_200050.jpg" onclick="openFull(this.src)">
+  <img src="IMG-20251009-WA0002.jpg" onclick="openFull(this.src)">
+  <img src="IMG-20251009-WA0001.jpg" onclick="openFull(this.src)">
+  <img src="IMG-20251009-WA0000.jpg" onclick="openFull(this.src)">
 
   <br>
   <button onclick="backToPage2()">⬅ Back</button>
@@ -222,15 +241,23 @@ function openFull(src){
 function closeFull(){
   document.getElementById("fullscreen").style.display="none";
 }
+
 function openProjectsImages(){
   document.getElementById("page2").style.display="none";
   document.getElementById("projectsImages").style.display="flex";
 }
+
+function openSketchesImages(){
+  document.getElementById("page2").style.display="none";
+  document.getElementById("sketchesImages").style.display="flex";
+}
+
 function backToPage2(){
   document.getElementById("projectsImages").style.display="none";
+  document.getElementById("sketchesImages").style.display="none";
   document.getElementById("page2").style.display="flex";
 }
 </script>
 
 </body>
-</html>
+                                      </html>
